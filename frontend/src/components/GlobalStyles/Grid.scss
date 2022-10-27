@@ -1,0 +1,122 @@
+@import './MediaQuery';
+
+// grid takes 100% viewport
+.grid {
+    width: 100%;
+    display: block;
+    padding: 0;
+
+    &.wide {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+
+    &.no-gaps {
+        margin: 0;
+
+        .col {
+            padding: 0;
+        }
+    }
+}
+
+@include mobile {
+    .row {
+        margin: 0 -4px;
+    }
+    
+    .col {
+        padding: 0 4px;
+    }
+    
+    .sm-0 {
+        display: none;
+    }
+    
+    @for $i from 1 through 12 {
+        .sm-#{$i} {
+            flex: 0 0 #{$i * 8.3333333333%};
+            max-width: #{$i * 8.3333333333%};
+        }
+    }
+}
+
+@include tablet {
+    .wide {
+        width: 720px;
+    }
+
+    .row {
+        margin: 0 -8px;
+    }
+
+    .col {
+        padding: 0 8px;
+    }
+
+    .md-0 {
+        display: none;
+    }
+
+    @for $i from 1 through 12 {
+        .md-#{$i} {
+            display: block;
+            flex: 0 0 #{$i * 8.3333333333%};
+            max-width: #{$i * 8.3333333333%};
+        }
+    }
+}
+
+@include desktop {
+    .row {
+        margin: 0 -12px;
+    }
+
+    .col {
+        padding: 0 12px;
+    }
+
+    .lg-0 {
+        display: none;
+    }
+
+    @for $i from 1 through 12 {
+        .lg-#{$i} {
+            display: block;
+            flex: 0 0 #{$i * 8.3333333333%};
+            max-width: #{$i * 8.3333333333%};
+        }
+    }
+}
+
+@include low-mid-res-desktop {
+    .wide {
+        width: 984px;
+
+        .row {
+            margin: 0 -12px;
+        }
+
+        .col {
+            padding: 0 12px;
+        }
+
+        .lg-0 {
+            display: none;
+        }
+    
+        @for $i from 1 through 12 {
+            .lg-#{$i} {
+                display: block;
+                flex: 0 0 #{$i * 8.3333333333%};
+                max-width: #{$i * 8.3333333333%};
+            }
+        }
+    }
+}
+

@@ -1,23 +1,30 @@
-// define width
-$mobile-width: 46.25em;
-$desktop-width: 64em;
+$tablet-width: 48em;  // 768px
+$desktop-width: 64em;   // 1024px
 
 @mixin mobile {
-    @media screen and (max-width: #{$mobile-width - 0.0625em}) {
+    @media screen and (max-width: #{$tablet-width - 0.0625em}) {
         @content
     }
-}
+};
 
 @mixin tablet {
     @media screen and
-            ((min-width: #{$mobile-width}) and
-            (max-width: #{$desktop-width - 0.0625em})) {
+            (min-width: #{$tablet-width}) and
+            (max-width: #{$desktop-width - 0.0625em}) {
         @content
     }
-}
+};
 
 @mixin desktop {
     @media screen and (min-width: #{$desktop-width}) {
         @content
     }
-}
+};
+
+@mixin low-mid-res-desktop {
+    @media screen and
+            (min-width: #{$desktop-width}) and 
+            (max-width: 77.4375em) { // 1239px
+        @content
+    }
+};
