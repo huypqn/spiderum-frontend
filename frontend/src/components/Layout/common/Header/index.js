@@ -17,7 +17,7 @@ function Header() {
 
     return (
         <header className={clsx(styles.wrapper)}>
-            <nav className={clsx(styles.navbar, "layout-1200 pad-16")}>
+            <nav className={clsx(styles.navbar, "grid wide pad-16")}>
                 <div className={clsx(styles.leftnav)}>
                     <Link className={clsx(styles.brandLogo)}
                         to='/'
@@ -119,7 +119,7 @@ function Header() {
                     </div>
                 </div>
             </nav>
-            <div className={clsx(styles.navbar, styles.modal, "layout-1200", {[styles.open]: modalStatus})}>
+            <div className={clsx(styles.navbar, styles.modal, "grid wide", {[styles.open]: modalStatus})}>
                 <button
                     className={clsx(styles.cancelSearch)}
                     onClick={cancelSearch}

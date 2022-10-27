@@ -3,8 +3,6 @@
 // grid takes 100% viewport
 .grid {
     width: 100%;
-    display: block;
-    padding: 0;
 
     &.wide {
         max-width: 1200px;
@@ -96,7 +94,7 @@
 
 @include MediaQuery.low-mid-res-desktop {
     .wide {
-        width: 984px;
+        // width: 984px;
 
         .row {
             margin: 0 -12px;
