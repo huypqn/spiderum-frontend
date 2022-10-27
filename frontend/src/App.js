@@ -5,7 +5,7 @@ import { publicRoutes } from '~/routes'
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div className="App grid" style={{height: 1200}}>
         <Routes>
           {
             publicRoutes.map((route, index) => {

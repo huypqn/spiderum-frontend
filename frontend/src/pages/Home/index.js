@@ -3,7 +3,11 @@ function Home() {
   
     return (
         <div>
-            <h1>Home page</h1>
+            <img
+                src={require('~/assets/images/home_main_banner.png')}
+                alt="homepage main banner"
+            >
+            </img>
         </div>
     )
 }

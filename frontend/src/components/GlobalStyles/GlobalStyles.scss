@@ -21,3 +21,21 @@ body {
     line-height: 1.5;
     text-rendering: optimizeSpeed;
 }
+
+.layout-1200 {
+    width: 120rem;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.pad-8 {
+    padding: 0 .8rem;
+}
+
+.pad-16 {
+    padding: 0 1.6rem;
+}
