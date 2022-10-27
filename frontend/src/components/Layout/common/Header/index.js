@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.scss';
@@ -6,6 +6,8 @@ import styles from './Header.module.scss';
 function Header() {
 
     const [modalStatus, setModalStatus] = useState(false)
+
+    const searchBox = useRef()
 
     const openSearchBox = (event) => {
         setModalStatus(true)
@@ -15,9 +17,15 @@ function Header() {
         setModalStatus(false)
     }
 
+    useEffect(() =>  {
+        if (modalStatus) {
+            searchBox.current.focus()
+        }
+    }, [modalStatus])
+
     return (
         <header className={clsx(styles.wrapper)}>
-            <nav className={clsx(styles.navbar, "layout-1200 pad-16")}>
+            <nav className={clsx(styles.navbar, "grid wide pad-16")}>
                 <div className={clsx(styles.leftnav)}>
                     <Link className={clsx(styles.brandLogo)}
                         to='/'
@@ -119,13 +127,14 @@ function Header() {
                     </div>
                 </div>
             </nav>
-            <div className={clsx(styles.navbar, styles.modal, "layout-1200", {[styles.open]: modalStatus})}>
+            <div className={clsx(styles.navbar, styles.modal, "grid wide", {[styles.open]: modalStatus})}>
                 <button
                     className={clsx(styles.cancelSearch)}
                     onClick={cancelSearch}
                 >
                 </button>
                 <input
+                    ref={searchBox}
                     className={clsx(styles.searchBox)}
                     type="text" placeholder='Tìm kiếm theo tiêu đề, tác giả hoặc tag'
                 />
