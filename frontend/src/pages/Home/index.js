@@ -1,13 +1,12 @@
+import styles from './Home.module.scss'
 
 function Home() {
   
     return (
         <div>
-            <img
-                src={require('~/assets/images/home_main_banner.png')}
-                alt="homepage main banner"
+            <div className={styles.mainBanner}
             >
-            </img>
+            </div>
         </div>
     )
 }

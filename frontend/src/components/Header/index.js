@@ -1,13 +1,19 @@
 import { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
-import { Link } from 'react-router-dom';
 import styles from './Header.module.scss';
+import Button from '../Button';
 
 function Header() {
 
     const [modalStatus, setModalStatus] = useState(false)
 
     const searchBox = useRef()
+
+    useEffect(() =>  {
+        if (modalStatus) {
+            searchBox.current.focus()
+        }
+    }, [modalStatus])
 
     const openSearchBox = (event) => {
         setModalStatus(true)
@@ -17,24 +23,15 @@ function Header() {
         setModalStatus(false)
     }
 
-    useEffect(() =>  {
-        if (modalStatus) {
-            searchBox.current.focus()
-        }
-    }, [modalStatus])
-
     return (
         <header className={clsx(styles.wrapper)}>
             <nav className={clsx(styles.navbar, "grid wide pad-16")}>
-                <div className={clsx(styles.leftnav)}>
-                    <Link className={clsx(styles.brandLogo)}
-                        to='/'
-                    >
+                <div className={clsx(styles.leftNav)}>
+                    <Button className={clsx(styles.brandLogo)} to='/'>
                         <picture>
                             <source
                                 media="(max-width: 767px)"
                                 srcSet={require('~/assets/icons/Logo.png')}
-                                sizes="(max-width: 767px) 40px, 47px"
                             >
                             </source>
                             <img
@@ -44,9 +41,9 @@ function Header() {
                                 height={25}
                             />
                         </picture>
-                    </Link>
+                    </Button>
                     <div className={clsx(styles.socialItem, "sm-0")}>
-                        <a
+                        <Button
                             className={clsx(styles.socialIcon)}
                             href="https://www.facebook.com/Spiderum"
                             target="_blank"
@@ -56,8 +53,8 @@ function Header() {
                                 src={require('~/assets/icons/facebook.svg').default}
                                 alt="facebook icon"
                             />
-                        </a>
-                        <a
+                        </Button>
+                        <Button
                             className={clsx(styles.socialIcon)}
                             href="https://www.youtube.com/spiderum"
                             target="_blank"
@@ -67,8 +64,8 @@ function Header() {
                                 src={require('~/assets/icons/youtube.svg').default}
                                 alt="youtube icon"
                             />
-                        </a>
-                        <a
+                        </Button>
+                        <Button
                             className={clsx(styles.socialIcon)}
                             href="https://anchor.fm/spiderum"
                             target="_blank"
@@ -78,9 +75,11 @@ function Header() {
                                 src={require('~/assets/icons/spotify.svg').default}
                                 alt="spotify icon"
                             />
-                        </a>
-                        <a
-                            className={clsx(styles.socialIcon, styles.navShop)}
+                        </Button>
+                        <Button
+                            className={clsx(styles.navShop, styles.socialIcon, "md-0 sm-0")}
+                            size="small"
+                            border="rounded"
                             href="https://shopee.vn/spiderum"
                             target="_blank"
                             rel="noreferrer"
@@ -90,49 +89,36 @@ function Header() {
                                 alt="cart icon"
                             />
                             <p>Spider's Shop</p>
-                        </a>
+                        </Button>
                     </div>
                 </div>
                 
-                <div className={clsx(styles.subnav)}>
-                    <button
-                        className={clsx(styles.searchBtn)}
-                        onClick={openSearchBox}
-                    >
+                <div className={clsx(styles.rightNav)}>
+                    <Button className={clsx(styles.searchBtn)} onClick={openSearchBox}>
                         <img
                             src={require('~/assets/icons/search.svg').default}
                             alt="search icon"
                         >
                         </img>
-                    </button>
-                    <div className={styles.subnavItem}>
-                        <Link
-                            className={clsx(styles.aboutBtn, "sm-0")}
-                            to="/about"
-                        >
-                            Về Spiderum
-                        </Link>
-                        <Link
-                            className={clsx(styles.registerBtn, "sm-0")}
-                            to="/register"
-                        >
-                            Đăng ký
-                        </Link>
-                        <Link
-                            className={clsx(styles.loginBtn)}
-                            to="/login"
-                        >
-                            Đăng nhập
-                        </Link>
-                    </div>
+                    </Button>
+
+                    <Button className="sm-0" type="textStyle" to="/about">
+                        Về Spiderum
+                    </Button>
+                    <Button className="sm-0" type="textStyle" to="/register">
+                        Đăng ký
+                    </Button>
+                    <Button type="primary" size="large" border="rounded" to="/login">
+                        Đăng nhập
+                    </Button>
                 </div>
             </nav>
             <div className={clsx(styles.navbar, styles.modal, "grid wide", {[styles.open]: modalStatus})}>
-                <button
+                <Button
                     className={clsx(styles.cancelSearch)}
                     onClick={cancelSearch}
                 >
-                </button>
+                </Button>
                 <input
                     ref={searchBox}
                     className={clsx(styles.searchBox)}

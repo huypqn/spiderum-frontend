@@ -2,7 +2,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap');
 
 :root {
-    --primary-color: #2e98d4;
+    --black: #000;
+    --white: #fff;
+    --white-border: #c4c4c4;
+    --brand-blue: #3398d4;
+    --blue-light: #2fb5fa;
+    --blue-dark: #258cc7;
+    --blue-darker: #2e89bf;
+
+    --navbar-height: 7.2rem;
+    --navbar-bottom-height: 5.6rem;
+    --padding-8: 0 0.8rem;
+    --padding-16: 0 1.6rem;
+    --font-size: 1.6rem;
+    --font-size-mobile: 1.4rem;
+    --line-height: 1.5;
 }
 
 * {
@@ -17,14 +31,21 @@ html {
 
 body {
     font-family: 'Noto Sans', sans-serif;
-    font-size: 1.6rem;
-    line-height: 1.5;
+    font-size: var(--font-size);
+    line-height: var(--line-height);
     text-rendering: optimizeSpeed;
+}
+
+button,
+input,
+[tabindex] {
+    border: none;
+    outline: none;
 }
 
 a {
     text-decoration: none;
-    color: black;
+    color: var(--black);
 }
 
 .pad-8 {

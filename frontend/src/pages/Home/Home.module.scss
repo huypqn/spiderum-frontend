@@ -1,0 +1,16 @@
+@use '../../components/GlobalStyles/MediaQuery.scss';
+
+.wrapper {
+
+}
+
+.mainBanner {
+    display: flex;
+    justify-content: flex-start;
+    min-height: 515px;
+    height: 55vh;
+    background-image: url('../../assets/images/home_main_banner.png');
+    background-repeat: no-repeat;
+    background-size: 117%;
+    background-position: center;
+}
