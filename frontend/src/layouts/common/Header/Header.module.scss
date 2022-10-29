@@ -1,4 +1,4 @@
-@use '../../../GlobalStyles/MediaQuery';
+@use '../../../components/GlobalStyles/MediaQuery';
 
 .wrapper {
     position: sticky;
@@ -149,7 +149,7 @@
         margin: 0 1.2rem;
         border: none;
         background: {
-            image: url('../../../../assets/icons/cancel_search.svg');
+            image: url('../../../assets/icons/cancel_search.svg');
             color: inherit;
             repeat: no-repeat;
             position: center;
