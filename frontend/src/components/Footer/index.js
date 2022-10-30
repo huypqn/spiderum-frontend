@@ -8,7 +8,7 @@ function Footer() {
         <React.Fragment>
             <hr></hr>
             <footer className={clsx(styles.wrapper, "grid wide")}>
-                <div className={clsx(styles.footerTop, "row")}>
+                <div className={clsx(styles.footerTop, "row flex")}>
                     <img
                         className='md-12 sm-12'
                         src={require('~/assets/icons/WideLogo.png')}
@@ -18,7 +18,7 @@ function Footer() {
                         ĐIỀU KIỆN SỬ DỤNG
                     </a>
                 </div>
-                <div className={clsx(styles.footerBottom, "row")}>
+                <div className={clsx(styles.footerBottom, "row flex")}>
                     <section className={clsx(styles.bottomLeft, "col")}>
                         <p><strong>CÔNG TY CỔ PHẦN FELIZZ</strong></p>
                         <p>Trực thuộc Công ty Cổ Phần Spiderum Việt Nam (Spiderum Vietnam JSC)</p>

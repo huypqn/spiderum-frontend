@@ -20,13 +20,14 @@ function Header() {
     }
 
     const cancelSearch = (event) => {
+        console.log("cancel clicked");
         setModalStatus(false)
     }
 
     return (
-        <header className={clsx(styles.wrapper)}>
-            <nav className={clsx(styles.navbar, "grid wide pad-16")}>
-                <div className={clsx(styles.leftNav)}>
+        <header className={clsx(styles.wrapper, "flex")}>
+            <nav className={clsx(styles.navbar, "grid wide pad-16 flex")}>
+                <div className={clsx(styles.leftNav, "flex")}>
                     <Button className={clsx(styles.brandLogo)} to='/'>
                         <picture>
                             <source
@@ -42,7 +43,7 @@ function Header() {
                             />
                         </picture>
                     </Button>
-                    <div className={clsx(styles.socialItem, "sm-0")}>
+                    <div className={clsx(styles.socialItem, "flex sm-0")}>
                         <Button
                             className={clsx(styles.socialIcon)}
                             href="https://www.facebook.com/Spiderum"
