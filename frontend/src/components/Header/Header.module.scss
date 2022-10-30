@@ -1,34 +1,23 @@
-@use '../../../GlobalStyles/MediaQuery';
+@use '../GlobalStyles/MediaQuery.scss';
 
 .wrapper {
     position: sticky;
     top: 0;
     left: 0;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    height: 7.2rem;
+    height: var(--navbar-height);
     background-color: #fff;
     box-shadow: 0 4px 20px rgba(0, 0, 0, .1);
 }
 
 .navbar {
-    display: flex;
-    align-items: center;
     justify-content: space-between;
     width: 100%;
     height: 4.8rem;
     
 }
 
-.leftnav {
-    display: flex;
-    align-items: center;
-}
-
 .brandLogo {
-    display: flex;
-    align-items: center;
     height: 100%;
     picture {
         height: 2.5rem;
@@ -45,9 +34,6 @@
 
 .socialItem {
     position: relative;
-    display: flex;
-    align-items: center;
-    flex: 1;
     margin-left: 1.6rem;
     padding-left: 0.8rem;
 
@@ -66,36 +52,28 @@
     }
 
     .socialIcon {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
         width: 3.2rem;
         height: 3.2rem;
-        margin-right: 0.8rem;
+
+        + .socialIcon {
+            margin-left: 0.8rem;
+        }
     }
 
     .navShop {
         width: 12rem;
         color: #92400e;
         background-color: #fff7ed;
-        font-size: 1.2rem;
         font-weight: 500;
-        border-radius: 2.5rem;
         padding: 0.2rem 0.8rem;
 
         p {
             margin-left: 0.8rem;
         }
     }
-
-    @include MediaQuery.tablet {
-        .navShop {
-            display: none;
-        }
-    }
 }
 
-.subnav {
+.rightNav {
     display: flex;
     align-items: center;
 
@@ -105,28 +83,16 @@
         background-color: #fff;
         width: 4rem;
         height: 4rem;
-        padding-top: 4px;
+        margin-right: -1rem;
 
         &:hover {
             background-color: rgb(227, 235, 246);
-            cursor: pointer;
         }
     }
 
-    .subnavItem {
-        font-size: 1.6rem;
-        font-weight: 400;
-
-        a {
-            margin-left: 1.6rem;
-        }
-    }
-
-    .loginBtn {
-        color: #fff;
-        background-color: var(--primary-color);
-        padding: 0.8rem 2rem;
-        border-radius: 3.2rem;
+    a + a,
+    button + a {
+        margin-left: 1.6rem;
     }
 }
 
@@ -137,9 +103,11 @@
     display: none;
     height: 4.8rem;
     background-color: rgb(246, 248, 252);
+    border-radius: 0.4rem;
 
     &.open {
         display: flex;
+        align-items: center;
     }
 
     .cancelSearch {
@@ -148,12 +116,11 @@
         margin: 0 1.2rem;
         border: none;
         background: {
-            image: url('../../../../assets/icons/cancel_search.svg');
+            image: url('../../assets/icons/cancel_search.svg');
             color: inherit;
             repeat: no-repeat;
             position: center;
         };
-        cursor: pointer;
     }
 
     .searchBox {

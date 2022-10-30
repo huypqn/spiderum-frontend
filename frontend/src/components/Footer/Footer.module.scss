@@ -1,0 +1,42 @@
+
+.wrapper {
+    color: #616161;
+    margin-top: 4.8rem;
+    padding: 1.6rem 1.6rem;
+}
+
+.footerTop {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: 10rem;
+    padding: 0 1.2rem 1.6rem;
+    border-bottom: 1px solid rgba($color: #616161, $alpha: 0.2);
+    
+    img {
+        max-width: 13rem;
+    }
+
+    a {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: inherit;
+    }
+}
+
+.footerBottom {
+    justify-content: space-between;
+    font-size: 1.2rem;
+    padding-top: 2.4rem;
+    
+    section {
+        margin: 0.8rem 0;
+    }
+
+    .bottomLeft img {
+        margin-top: 1.6rem;
+    }
+}
+
+hr {
+    opacity: 0.1;
+}

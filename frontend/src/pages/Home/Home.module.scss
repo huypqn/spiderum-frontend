@@ -1,0 +1,89 @@
+@use '../../components/GlobalStyles/MediaQuery.scss';
+
+.wrapper {
+
+}
+
+.homeBanner {
+    display: flex;
+    justify-content: flex-start;
+    height: 51.5rem;
+    background-image: url('../../assets/images/home_main_banner.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include MediaQuery.tablet {
+        height: 49rem;
+        background-image: url('../../assets/images/home_main_banner_tablet.png');
+    }
+
+    @include MediaQuery.mobile {
+        height: 31.2rem;
+        background-image: url('../../assets/images/home_main_banner_mobile.png');
+    }
+}
+
+.homeBannerContent {
+
+    max-width: 60%;
+    font-family: var(--roboto-font);
+    
+    .bannerHeading {
+        font-size: 5.6rem;
+        font-weight: 500;
+        margin-bottom: 1.6rem;
+        line-height: 6.2rem;
+        background: linear-gradient(90deg,#262443 0,#2a99d5);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    
+    .bannerDetail {
+        font-size: 3rem;
+        line-height: 4.2rem;
+        margin-bottom: 1.6rem;
+    }
+
+    .bannerButton {
+        padding: 1rem 5rem;
+        border-color: #606266;
+    }
+
+    @include MediaQuery.tablet {
+        .bannerHeading {
+            font-size: 3.6rem;
+            line-height: 4.5rem;
+        }
+    
+        .bannerDetail {
+            font-size: 1.8rem;
+            line-height: 3.2rem;
+        }
+    }
+    
+    @include MediaQuery.mobile {
+        .homeBannerContent {
+            width: 100%;
+        }
+        .bannerHeading {
+            font-size: 2.8rem;
+            line-height: 4rem;
+        }
+    
+        .bannerDetail {
+            font-size: 1.6rem;
+            line-height: 2.4rem;
+        }
+    }
+}
+
+@include MediaQuery.mobile {
+    .homeBannerContent {
+        max-width: 100%;
+        padding: 0 2rem;
+    }
+}
+
+
+
+

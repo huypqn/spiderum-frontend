@@ -1,4 +1,4 @@
-import { MainLayout } from '~/components/Layout'
+import { MainLayout } from '~/layouts'
 import Home from '~/pages/Home';
 import Register from '~/pages/Register';
 import Login from '~/pages/Login';
