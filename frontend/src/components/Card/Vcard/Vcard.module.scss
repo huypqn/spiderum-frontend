@@ -5,11 +5,6 @@
     flex: 1;
 }
 
-.footerLeft img {
-    width: Card.$avatar-vCard;
-    height: Card.$avatar-vCard;
-}
-
 @include MediaQuery.mobile {
     
     .thumbnail {

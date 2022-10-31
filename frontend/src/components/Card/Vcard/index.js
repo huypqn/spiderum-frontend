@@ -37,7 +37,11 @@ function Vcard({ className, data, ...otherProps }) {
                 <footer className={clsx("flex", styles.detailFooter, styles.time)}>
                     <div className={clsx(styles.footerLeft, "flex")}>
                         <Button to='/'>
-                            <img src={data.avatar} alt="author avatar"/>
+                            <img
+                                className={clsx(styles["avatar-sm"])}
+                                src={data.avatar}
+                                alt="author avatar"
+                            />
                         </Button>
                         {/* author name */}
                         <Button className={clsx(styles.author)} to='/'>

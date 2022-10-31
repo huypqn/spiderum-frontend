@@ -61,12 +61,21 @@ function Home() {
             </div>
             
             <div className='grid wide pad-16'>
+
+                <div className={clsx(styles.test)}>
+                    <Hcard data={data[0]} trending></Hcard>
+                    <Hcard data={data[1]} trending></Hcard>
+                    <Hcard data={data[0]} trending></Hcard>
+                    <Hcard data={data[1]} trending></Hcard>
+                </div>
+
                 <div className='row'>
                     <Vcard className='col lg-3 md-6 sm-12' data={data[0]}></Vcard>
                     <Vcard className='col lg-3 md-6 sm-12' data={data[1]}></Vcard>
                     <Vcard className='col lg-3 md-6 sm-12' data={data[0]}></Vcard>
                     <Vcard className='col lg-3 md-6 sm-12' data={data[1]}></Vcard>
                 </div>
+                
                 <div className='row' style={{paddingTop: 100}}>
                     <div className='col lg-8'>
                         <Hcard data={data[0]} upvote comment></Hcard>

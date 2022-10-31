@@ -1,5 +1,23 @@
 @use '../../components/GlobalStyles/MediaQuery.scss';
 
+.test {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2.4rem;
+}
+
+@include MediaQuery.tablet {
+    .test {
+        column-gap: 1.6rem;
+    }
+}
+
+@include MediaQuery.mobile {
+    .test {
+        grid-template-columns: 1fr;
+    }
+}
+
 .homeBanner {
     display: flex;
     align-items: center;

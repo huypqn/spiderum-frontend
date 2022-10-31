@@ -1,7 +1,7 @@
 @use '../GlobalStyles/MediaQuery.scss';
 
-$avatar-vCard: 2.4rem;
-$avatar-hCard: 4.8rem;
+$avatar-sm: 2.4rem;
+$avatar-lg: 4.8rem;
 
 @mixin dot {
     position: absolute;
@@ -16,7 +16,6 @@ $avatar-hCard: 4.8rem;
 }
 
 .thumbnail {
-
     a {
         display: block;
         width: 100%;
@@ -28,8 +27,11 @@ $avatar-hCard: 4.8rem;
         height: inherit;
         object-fit: cover;
         border-radius: 0.4rem;
+        overflow: hidden;
     }
 }
+
+
 
 .detail {
     flex-direction: column;
@@ -49,14 +51,14 @@ $avatar-hCard: 4.8rem;
     display: flex;
     flex-direction: column;
     margin: 0.4em 0 1.6rem;
+}
 
-    .title {
-        justify-content: flex-start;
-        max-height: 6rem;
-        font-size: 2rem;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-    }
+.title {
+    justify-content: flex-start;
+    max-height: 6rem;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
 }
 
 .detailFooter {
@@ -92,6 +94,20 @@ $avatar-hCard: 4.8rem;
     color: #909399;
 }
 
+.avatar-lg {
+    width: $avatar-lg;
+    height: $avatar-lg;
+}
+
+.avatar-sm {
+    width: $avatar-sm;
+    height: $avatar-sm;
+}
+
+.title-md {
+    font-size: 1.5rem;
+}
+
 // extra
 .extra {
     overflow: hidden;
@@ -110,6 +126,12 @@ $avatar-hCard: 4.8rem;
     }
 }
 
+@include MediaQuery.tablet {
+    .detailFooter .author {
+        font-size: 1.2rem;
+    }
+}
+
 @include MediaQuery.mobile {
 
     .detail {
@@ -123,5 +145,4 @@ $avatar-hCard: 4.8rem;
     .detailFooter .author {
         font-size: 1.2rem;
     }
-    
 }

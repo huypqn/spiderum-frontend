@@ -9,17 +9,22 @@ function Hcard({ className, data, ...otherProps }) {
 
     return (
         <div className={clsx("flex", styles.wrapper, {
-            [className]: className
+            [styles.trending]: otherProps.trending,
+            [className]: className,
         })}>
             {/* post thumbnail */}
-            <div className={clsx(styles.thumbnail)}>
-                <Button to={data.url}>
+            <div className={clsx(styles.thumbnail, {
+                [styles.trending]: otherProps.trending,
+            })}>
+                <Button className={clsx(styles.thumbLink)} to={data.url}>
                     <img src={data.thumbnail} alt="post's thumbnail" />
                 </Button>
             </div>
 
             {/* post detail */}
-            <div className={clsx("flex", styles.detail)}>
+            <div className={clsx("flex", styles.detail, {
+                [styles.trending]: otherProps.trending,
+            })}>
                 {/* detail header include: topic, time to read, bookmark */}
                 <header className={clsx("flex", styles.detailHeader)}>
                     <div className={clsx(styles.headerLeft, styles.time)}>
@@ -36,10 +41,17 @@ function Hcard({ className, data, ...otherProps }) {
 
                 {/* detail content include: title, description */}
                 <section className={clsx(styles.detailContent)}>
-                    <Button className={clsx(styles.title)} to='/'>
+                    <Button
+                        className={clsx(styles.title, {
+                            [styles["title-md"]]: otherProps.trending
+                        })}
+                        to='/'
+                    >
                         <span>{data.title}</span>
                     </Button>
-                    <span className={clsx(styles.desc)}>
+                    <span className={clsx(styles.desc, {
+                        [styles["desc-sm"]]: otherProps.trending
+                    })}>
                         {data.desc}
                     </span>
                 </section>
@@ -48,7 +60,13 @@ function Hcard({ className, data, ...otherProps }) {
                 <footer className={clsx("flex", styles.detailFooter, styles.time)}>
                     <div className={clsx(styles.footerLeft, "flex")}>
                         <Button to='/'>
-                            <img src={data.avatar} alt="author avatar"/>
+                            <img
+                                className={clsx(styles["avatar-lg"], {
+                                    [styles["avatar-sm"]]: otherProps.trending
+                                })}
+                                src={data.avatar}
+                                alt="author avatar"
+                            />
                         </Button>
                         {/* author name */}
                         <Button className={clsx(styles.author)} to='/'>
