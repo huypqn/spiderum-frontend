@@ -1,25 +1,23 @@
 @use '../../components/GlobalStyles/MediaQuery.scss';
 
-.wrapper {
-
-}
-
 .homeBanner {
     display: flex;
+    align-items: center;
     justify-content: flex-start;
+    margin-top: var(--navbar-height);
     height: 51.5rem;
-    background-image: url('../../assets/images/home_main_banner.png');
+    background-image: url('../../assets/images/home_main.png');
     background-repeat: no-repeat;
     background-size: cover;
 
     @include MediaQuery.tablet {
         height: 49rem;
-        background-image: url('../../assets/images/home_main_banner_tablet.png');
+        background-image: url('../../assets/images/home_main_tablet.png');
     }
 
     @include MediaQuery.mobile {
         height: 31.2rem;
-        background-image: url('../../assets/images/home_main_banner_mobile.png');
+        background-image: url('../../assets/images/home_main_mobile.png');
     }
 }
 

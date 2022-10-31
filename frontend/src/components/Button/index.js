@@ -36,7 +36,7 @@ function Button({ type, size, border, disabled, to, href, className,
     
     return (
         <Component className={classes} {..._props}>
-            <span className={styles.align}>{children}</span>
+            {children}
         </Component>
     )
 }

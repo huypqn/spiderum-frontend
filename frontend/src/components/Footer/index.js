@@ -1,17 +1,17 @@
 import clsx from 'clsx'
-import React from 'react'
 import styles from './Footer.module.scss'
+import { icons } from '~/assets'
 
 function Footer() {
 
     return (
-        <React.Fragment>
+        <>
             <hr></hr>
             <footer className={clsx(styles.wrapper, "grid wide")}>
                 <div className={clsx(styles.footerTop, "row flex")}>
                     <img
                         className='md-12 sm-12'
-                        src={require('~/assets/icons/WideLogo.png')}
+                        src={icons.wideLogo}
                         alt="Spiderum logo"
                     />
                     <a href="https://aboutus.spiderum.com/dieu-khoan" className='md-12 sm-12'>
@@ -25,7 +25,7 @@ function Footer() {
                         <p>Người chịu trách nhiệm nội dung: Trần Việt Anh</p>
                         <p>Giấy phép MXH số 341/GP-TTTT do Bộ TTTT cấp ngày 27 tháng 6 năm 2016</p>
                         <img
-                            src={require('~/assets/icons/dmca_protected.png')}
+                            src={icons.dmca}
                             alt="dmca protected icon"
                             width={72}
                             height={24}
@@ -40,7 +40,7 @@ function Footer() {
                 </div>
                 
             </footer>
-        </React.Fragment>
+        </>
     )
 }
 
