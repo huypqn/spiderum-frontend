@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import styles from './Header.module.scss';
 import Button from '../Button';
+import { routesPath } from '~/config';
+import { icons } from '~/assets'
 
 function Header() {
 
@@ -28,15 +30,15 @@ function Header() {
         <header className={clsx(styles.wrapper, "flex")}>
             <nav className={clsx(styles.navbar, "grid wide pad-16 flex")}>
                 <div className={clsx(styles.leftNav, "flex")}>
-                    <Button className={clsx(styles.brandLogo)} to='/'>
+                    <Button className={clsx(styles.brandLogo)} to={routesPath.home}>
                         <picture>
                             <source
                                 media="(max-width: 767px)"
-                                srcSet={require('~/assets/icons/Logo.png')}
+                                srcSet={icons.logo}
                             >
                             </source>
                             <img
-                                src={require('~/assets/icons/WideLogo.png')}
+                                src={icons.wideLogo}
                                 alt="Spiderum logo"
                                 width={110}
                                 height={25}
@@ -50,10 +52,7 @@ function Header() {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <img
-                                src={require('~/assets/icons/facebook.svg').default}
-                                alt="facebook icon"
-                            />
+                            <img src={icons.facebook} alt="facebook icon" />
                         </Button>
                         <Button
                             className={clsx(styles.socialIcon)}
@@ -61,10 +60,7 @@ function Header() {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <img
-                                src={require('~/assets/icons/youtube.svg').default}
-                                alt="youtube icon"
-                            />
+                            <img src={icons.youtube} alt="youtube icon" />
                         </Button>
                         <Button
                             className={clsx(styles.socialIcon)}
@@ -72,10 +68,7 @@ function Header() {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <img
-                                src={require('~/assets/icons/spotify.svg').default}
-                                alt="spotify icon"
-                            />
+                            <img src={icons.spotify} alt="spotify icon" />
                         </Button>
                         <Button
                             className={clsx(styles.navShop, styles.socialIcon, "md-0 sm-0")}
@@ -85,10 +78,7 @@ function Header() {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <img
-                                src={require('~/assets/icons/shop.svg').default}
-                                alt="cart icon"
-                            />
+                            <img src={icons.shop} alt="cart icon" />
                             <p>Spider's Shop</p>
                         </Button>
                     </div>
@@ -96,20 +86,16 @@ function Header() {
                 
                 <div className={clsx(styles.rightNav)}>
                     <Button className={clsx(styles.searchBtn)} onClick={openSearchBox}>
-                        <img
-                            src={require('~/assets/icons/search.svg').default}
-                            alt="search icon"
-                        >
-                        </img>
+                        <img src={icons.search} alt="search icon" />
                     </Button>
 
-                    <Button className="sm-0" type="textStyle" to="/about">
+                    <Button className="sm-0" type="textStyle" to={routesPath.about}>
                         Về Spiderum
                     </Button>
-                    <Button className="sm-0" type="textStyle" to="/register">
+                    <Button className="sm-0" type="textStyle" to={routesPath.register}>
                         Đăng ký
                     </Button>
-                    <Button type="primary" size="large" border="rounded" to="/login">
+                    <Button type="primary" size="large" border="rounded" to={routesPath.login}>
                         Đăng nhập
                     </Button>
                 </div>
@@ -125,12 +111,7 @@ function Header() {
                     className={clsx(styles.searchBox)}
                     type="text" placeholder='Tìm kiếm theo tiêu đề, tác giả hoặc tag'
                 />
-                <img
-                    src={require('~/assets/icons/search.svg').default}
-                    alt="search icon"
-                >
-                </img>
-
+                <img src={icons.search} alt="search icon" />
             </div>
         </header>
     )

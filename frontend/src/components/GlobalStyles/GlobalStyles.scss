@@ -51,7 +51,10 @@ a {
 
 .flex {
     display: flex;
-    align-items: center;
+}
+
+.flex-col {
+    flex-direction: column;
 }
 
 .pad-8 {

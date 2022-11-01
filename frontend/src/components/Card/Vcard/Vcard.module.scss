@@ -1,0 +1,13 @@
+@use '../../GlobalStyles/MediaQuery.scss';
+@use '../Card.module.scss';
+
+.detail {
+    flex: 1;
+}
+
+@include MediaQuery.mobile {
+    
+    .thumbnail {
+        width: 24%;
+    }    
+}
