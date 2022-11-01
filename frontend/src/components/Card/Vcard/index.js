@@ -2,6 +2,7 @@ import clsx from 'clsx'
 import Button from '~/components/Button'
 import styles from './Vcard.module.scss'
 import { icons } from '~/assets'
+import { routesPath } from '~/config'
 
 function Vcard({ className, data, ...otherProps }) {
 
@@ -29,14 +30,14 @@ function Vcard({ className, data, ...otherProps }) {
                 </header>
 
                 <section className={clsx(styles.detailContent)}>
-                    <Button className={clsx(styles.title)} to='/'>
+                    <Button className={clsx(styles.title)} to={routesPath.home}>
                         <span>{data.title}</span>
                     </Button>
                 </section>
 
                 <footer className={clsx("flex", styles.detailFooter, styles.time)}>
                     <div className={clsx(styles.footerLeft, "flex")}>
-                        <Button to='/'>
+                        <Button to={`${routesPath.user}/${data.username}`}>
                             <img
                                 className={clsx(styles["avatar-sm"])}
                                 src={data.avatar}
@@ -44,7 +45,7 @@ function Vcard({ className, data, ...otherProps }) {
                             />
                         </Button>
                         {/* author name */}
-                        <Button className={clsx(styles.author)} to='/'>
+                        <Button className={clsx(styles.author)} to={`${routesPath.user}/${data.username}`}>
                             <span>{data.author}</span>
                         </Button>
                         {/* publish date */}

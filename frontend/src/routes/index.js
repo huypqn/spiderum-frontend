@@ -1,22 +1,73 @@
+import { Navigate, Outlet } from 'react-router-dom'
+import { routesPath } from '~/config';
 import { MainLayout } from '~/layouts'
-import Home from '~/pages/Home';
-import Register from '~/pages/Register';
-import Login from '~/pages/Login';
-import About from '~/pages/About';
-import Post from '~/pages/Post';
+import { ProfileSetting } from '~/pages/private';
+import { Home, Login, Register, About, Post, Profile, Error404, Topic } from '~/pages/public'
+
 
 // Public routes
-const publicRoutes = [
-    { path: '/', component: Home, layout: MainLayout },
-    { path: '/register', component: Register, layout: null },
-    { path: '/login', component: Login, layout: null },
-    { path: '/about', component: About, layout: null },
-    { path: '/post', component: Post, layout: MainLayout },
+const routing = (auth) => [
+    {
+        path: routesPath.home,
+        children: [
+            {
+                index: true,
+                element: <MainLayout><Home /></MainLayout>
+            },
+            {
+                path: routesPath.register,
+                element: <><Register /></>
+            },
+            {
+                path: routesPath.login,
+                element: <><Login /></>
+            },
+            {
+                path: routesPath.about,
+                element: <><About /></>
+            },
+            {
+                path: routesPath.topic,
+                element: <Outlet/>,
+                children: [ 
+                    {
+                        path: ':topicName',
+                        element: <MainLayout><Topic/></MainLayout>
+                    }
+                ]
+            },
+            {
+                path: routesPath.post,
+                element: <Outlet/>,
+                children: [
+                    {
+                        path: ':title',
+                        element: <MainLayout><Post></Post></MainLayout>
+                    }
+                ]
+            },
+            {
+                path: routesPath.user,
+                element: <Outlet/>,
+                children: [
+                    {
+                        path: ':username',
+                        element: <><Profile/></>
+                    },
+                    {
+                        path: 'setting',
+                        element: auth.token
+                            ? <ProfileSetting/>
+                            : <Navigate to={'/' + routesPath.login}/>
+                    }
+                ]
+            },
+        ],
+    },
+    {
+        path: routesPath.error404,
+        element: <Error404 />
+    }
 ]
 
-// Private routes (user only)
-const privateRoutes = [
-
-]
-
-export { publicRoutes, privateRoutes }
+export { routing }

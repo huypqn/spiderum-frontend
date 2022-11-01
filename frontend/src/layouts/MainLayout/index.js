@@ -3,13 +3,13 @@ import Footer from "~/components/Footer";
 
 function MainLayout({ children }) {
     return (
-        <div>
+        <>
             <Header />
-            <div className="container">
+            <div className="container" style={{marginTop: 100}}>
                 {children}
             </div>
             <Footer />
-        </div>
+        </>
     )
 }
 

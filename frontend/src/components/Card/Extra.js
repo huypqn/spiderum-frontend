@@ -5,8 +5,6 @@ import styles from './Card.module.scss'
 
 function Extra({ className, data, ...props}) {
 
-    console.log(data);
-
     return (
         <div className={clsx("flex", styles.extra)}>
             { props.upvote && (

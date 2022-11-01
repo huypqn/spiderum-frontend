@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import styles from './Header.module.scss';
 import Button from '../Button';
+import { routesPath } from '~/config';
 import { icons } from '~/assets'
 
 function Header() {
@@ -29,7 +30,7 @@ function Header() {
         <header className={clsx(styles.wrapper, "flex")}>
             <nav className={clsx(styles.navbar, "grid wide pad-16 flex")}>
                 <div className={clsx(styles.leftNav, "flex")}>
-                    <Button className={clsx(styles.brandLogo)} to='/'>
+                    <Button className={clsx(styles.brandLogo)} to={routesPath.home}>
                         <picture>
                             <source
                                 media="(max-width: 767px)"
@@ -88,13 +89,13 @@ function Header() {
                         <img src={icons.search} alt="search icon" />
                     </Button>
 
-                    <Button className="sm-0" type="textStyle" to="/about">
+                    <Button className="sm-0" type="textStyle" to={routesPath.about}>
                         Về Spiderum
                     </Button>
-                    <Button className="sm-0" type="textStyle" to="/register">
+                    <Button className="sm-0" type="textStyle" to={routesPath.register}>
                         Đăng ký
                     </Button>
-                    <Button type="primary" size="large" border="rounded" to="/login">
+                    <Button type="primary" size="large" border="rounded" to={routesPath.login}>
                         Đăng nhập
                     </Button>
                 </div>

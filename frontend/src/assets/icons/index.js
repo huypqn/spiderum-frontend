@@ -2,7 +2,7 @@
 const icons = {
     logo: require('~/assets/icons/Logo.png'),
     wideLogo: require('~/assets/icons/WideLogo.png'),
-    dmca: require('~/assets/icons/dmca.png').default,
+    dmca: require('~/assets/icons/dmca.png'),
 
     facebook: require('~/assets/icons/facebook.svg').default,
     youtube: require('~/assets/icons/youtube.svg').default,
