@@ -9,8 +9,8 @@ function Home() {
         {
             "id": 1,
             "title": "5 giai đoạn thay đổi bản thân",
-            "author": "Viet Anh Tran",
-            "username": "please",
+            "Viet Anh Tran",
+            "email": "hello@gmail.com",
             "topic": "quan điểm tranh luận",
             "publishAt": "21 Th10",
             "timeToRead": "17 phút đọc",
@@ -25,8 +25,8 @@ function Home() {
         {
             "id": 1,
             "title": "Nhật ký vượt bão của một nhà đầu tư thích viết lách",
-            "author": "Viet Anh Tran",
-            "username": "dontgo",
+            "Viet Anh Tran",
+            "email": "hello@gmail.com",
             "topic": "quan điểm tranh luận",
             "publishAt": "21 Th10",
             "timeToRead": "17 phút đọc",
@@ -82,7 +82,6 @@ function Home() {
                     <div className='col lg-8'>
                         <Hcard data={data[0]} upvote comment></Hcard>
                         <Hcard data={data[1]} view></Hcard>
-
                     </div>
                     <div className='col lg-4'></div>
                 </div>
