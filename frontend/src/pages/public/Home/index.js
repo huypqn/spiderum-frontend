@@ -9,7 +9,7 @@ function Home() {
         {
             "id": 1,
             "title": "5 giai đoạn thay đổi bản thân",
-            "Viet Anh Tran",
+            "author": "Viet Anh Tran",
             "email": "hello@gmail.com",
             "topic": "quan điểm tranh luận",
             "publishAt": "21 Th10",
@@ -25,7 +25,7 @@ function Home() {
         {
             "id": 1,
             "title": "Nhật ký vượt bão của một nhà đầu tư thích viết lách",
-            "Viet Anh Tran",
+            "author": "Viet Anh Tran",
             "email": "hello@gmail.com",
             "topic": "quan điểm tranh luận",
             "publishAt": "21 Th10",
