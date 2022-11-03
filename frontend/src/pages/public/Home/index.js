@@ -1,7 +1,8 @@
 import clsx from 'clsx'
 import styles from './Home.module.scss'
-import Button from '~/components/Button'
+import Banner from './Banner'
 import { Hcard, Vcard } from '~/components/Card'
+import Pagination from '~/components/Pagination'
 
 function Home() {
 
@@ -42,26 +43,7 @@ function Home() {
   
     return (
         <div>
-            <div className={clsx(styles.homeBanner, "flex")}>
-                <div className="grid wide pad-16">
-                    <div className={clsx(styles.homeBannerContent)}>
-                        <h1 className={clsx(styles.bannerHeading)}>
-                            Góc nhìn đa chiều của thế hệ trẻ Việt Nam
-                        </h1>
-                        <div className={clsx(styles.bannerDetail)}>
-                            Viết - Chia sẻ - Kết nối - Chiêm nghiệm <br/>
-                            Tất cả tại Spiderum
-                        </div>
-                        <Button
-                            className={clsx(styles.bannerButton)}
-                            type="outline" size="large" border="rounded"
-                        >
-                            Đăng bài viết
-                        </Button>
-                    </div>
-                </div>
-            </div>
-            
+            <Banner />          
             <div className='grid wide pad-16'>
 
                 <div className={clsx(styles.test)}>
@@ -82,11 +64,12 @@ function Home() {
                     <div className='col lg-8'>
                         <Hcard data={data[0]} upvote comment></Hcard>
                         <Hcard data={data[1]} view></Hcard>
+                        <Pagination pagination={{"page": 1, "limit": 10, "total": 170}} maxSize={6}/>
                     </div>
                     <div className='col lg-4'></div>
                 </div>
-
             </div>
+
         </div>
     )
 }
