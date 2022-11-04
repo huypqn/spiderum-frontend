@@ -35,14 +35,12 @@ function Hcard({ className, data, ...otherProps }) {
                         >
                             {data.topic}
                         </Button>
-                        {data.timeToRead}
-                     </div>
-
+                        {data.time_to_read}
+                        </div>
                     <Button className={clsx(styles.headerRight)}>
                         <img src={icons.bookmark} alt="bookmark icon" />
                     </Button>
                 </header>
-
                 {/* detail content include: title, description */}
                 <section className={clsx(styles.detailContent)}>
                     <Button
@@ -73,7 +71,10 @@ function Hcard({ className, data, ...otherProps }) {
                             />
                         </Button>
                         {/* author name */}
-                        <Button className={clsx(styles.author)} to={`${routesPath.user}/${data.username}`}>
+                        <Button
+                            className={clsx(styles.author)}
+                            to={`${routesPath.user}/${data.username}`}
+                        >
                             <span>{data.author}</span>
                         </Button>
                         {/* publish date */}

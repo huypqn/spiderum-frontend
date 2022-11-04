@@ -7,7 +7,7 @@ import { routesPath } from '~/config'
 function Vcard({ className, data, ...otherProps }) {
 
     return (
-        <div className={clsx(styles.wrapper, "flex", {
+        <div className={clsx(styles.wrapper, {
             [className]: className
         })}>
             {/* post thumbnail */}
@@ -21,9 +21,8 @@ function Vcard({ className, data, ...otherProps }) {
             <div className={clsx("flex", styles.detail)}>
                 <header className={clsx("flex", styles.detailHeader)}>
                     <div className={clsx(styles.headerLeft, styles.time)}>
-                        {data.timeToRead}
-                     </div>
-
+                        {data.time_to_read}
+                    </div>
                     <Button className={clsx(styles.headerRight)}>
                         <img src={icons.bookmark} alt="bookmark icon" />
                     </Button>
@@ -31,7 +30,7 @@ function Vcard({ className, data, ...otherProps }) {
 
                 <section className={clsx(styles.detailContent)}>
                     <Button className={clsx(styles.title)} to={routesPath.home}>
-                        <span>{data.title}</span>
+                        <div>{data.title}</div>
                     </Button>
                 </section>
 
@@ -49,7 +48,7 @@ function Vcard({ className, data, ...otherProps }) {
                             <span>{data.author}</span>
                         </Button>
                         {/* publish date */}
-                        <span>{data.publishAt}</span>
+                        <span>{data.publish}</span>
                     </div>
 
                     {/* extra info include: upvote, comment, view */}

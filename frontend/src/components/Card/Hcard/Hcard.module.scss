@@ -44,7 +44,7 @@
 // responsive
 @include MediaQuery.desktop {
     .thumbnail.trending {
-        width: 80%;
+        width: 60%;
     }
 }
 
@@ -57,8 +57,8 @@
         display: none;
     }
 
-    .thumbnail {
-        width: 30%;
+    .thumbnail.trending {
+        width: 32%;
     }
 
     .detail {
@@ -80,7 +80,7 @@
     }
 
     .thumbnail.trending {
-        width: 24%;
+        width: 28%;
     }
 
     .detail {

@@ -7,7 +7,7 @@ function App() {
 
   return (
 
-        <div className='App' style={{height: 1200}}>
+        <div className='App'>
             {element}
         </div>
 

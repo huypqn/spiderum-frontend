@@ -22,7 +22,7 @@ function Extra({ className, data, ...props}) {
             { props.view && (
                 <Button>
                     <img src={icons.view} alt=" view icon" />
-                    <span>{data.seen}</span>
+                    <span>{data.view}</span>
                 </Button>
             )}
         </div>

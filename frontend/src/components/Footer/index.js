@@ -5,9 +5,9 @@ import { icons } from '~/assets'
 function Footer() {
 
     return (
-        <>
+        <footer className={clsx(styles.wrapper)}>
             <hr></hr>
-            <footer className={clsx(styles.wrapper, "grid wide")}>
+            <div className="grid wide pad-16">
                 <div className={clsx(styles.footerTop, "row flex")}>
                     <img
                         className='md-12 sm-12'
@@ -38,9 +38,8 @@ function Footer() {
                         <p>Tầng 11, tòa nhà HL Tower, lô A2B, phố Duy Tân, phường Dịch Vọng Hậu, Cầu Giấy, Hà Nội</p>
                     </section>
                 </div>
-                
-            </footer>
-        </>
+            </div>
+        </footer>
     )
 }
 

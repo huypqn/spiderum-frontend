@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import Button from '~/components/Button'
-import styles from './Home.module.scss'
+import styles from './Banner.module.scss'
 
 function Banner() {
 
