@@ -7,8 +7,7 @@ import Button from '~/components/Button'
 import { Hcard } from '~/components/Card'
 import Pagination from '~/components/Pagination'
 import { dataService } from '~/services'
-import { pathName, pageConfig } from '~/config'
-import { vnEncodeUrl } from '~/utils'
+import { pageConfig } from '~/config'
 
 function MainContent({ sort }) {
 

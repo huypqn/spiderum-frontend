@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import clsx from 'clsx'
 
 import styles from './Home.module.scss'
