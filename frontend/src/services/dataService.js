@@ -16,7 +16,7 @@ const getPosts = async (options) => {
         const res = await httpRequest.get('/post', {
             params: options
         })
-        return res.data
+        return res
     } catch (error) {
         console.log(error)
     }

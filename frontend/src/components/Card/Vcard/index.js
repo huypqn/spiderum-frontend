@@ -2,7 +2,8 @@ import clsx from 'clsx'
 import Button from '~/components/Button'
 import styles from './Vcard.module.scss'
 import { icons } from '~/assets'
-import { routesPath } from '~/config'
+import { routesPath, pathName } from '~/config'
+import { vnEncodeUrl } from '~/utils'
 
 function Vcard({ className, data, ...otherProps }) {
 
@@ -12,7 +13,7 @@ function Vcard({ className, data, ...otherProps }) {
         })}>
             {/* post thumbnail */}
             <div className={clsx(styles.thumbnail)}>
-                <Button to={data.url}>
+                <Button to={`${pathName.post}/${vnEncodeUrl(data.title)}`}>
                     <img src={data.thumbnail} alt="post's thumbnail" />
                 </Button>
             </div>
@@ -29,14 +30,17 @@ function Vcard({ className, data, ...otherProps }) {
                 </header>
 
                 <section className={clsx(styles.detailContent)}>
-                    <Button className={clsx(styles.title)} to={routesPath.home}>
+                    <Button
+                        className={clsx(styles.title)}
+                        to={`${pathName.post}/${vnEncodeUrl(data.title)}`}
+                    >
                         <div>{data.title}</div>
                     </Button>
                 </section>
 
                 <footer className={clsx("flex", styles.detailFooter, styles.time)}>
                     <div className={clsx(styles.footerLeft, "flex")}>
-                        <Button to={`${routesPath.user}/${data.username}`}>
+                        <Button to={`${pathName.user}/${data.username}`}>
                             <img
                                 className={clsx(styles["avatar-sm"])}
                                 src={data.avatar}
@@ -44,11 +48,16 @@ function Vcard({ className, data, ...otherProps }) {
                             />
                         </Button>
                         {/* author name */}
-                        <Button className={clsx(styles.author)} to={`${routesPath.user}/${data.username}`}>
+                        <Button
+                            className={clsx(styles.author)}
+                            to={`${pathName.user}/${data.username}`}
+                        >
                             <span>{data.author}</span>
                         </Button>
                         {/* publish date */}
-                        <span>{data.publish}</span>
+                        <span className={clsx(styles.time, {
+                            [styles.dateShow]: otherProps.date
+                        })}>{data.publish}</span>
                     </div>
 
                     {/* extra info include: upvote, comment, view */}

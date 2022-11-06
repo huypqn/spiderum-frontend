@@ -1,1 +1,2 @@
-export { default as routesPath } from './routes'
+export { routesPath, pathName } from './routes'
+export { default as pageConfig } from './pagination'

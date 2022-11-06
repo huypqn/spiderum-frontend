@@ -45,6 +45,7 @@
     .bannerButton {
         padding: 1rem 5rem;
         border-color: #606266;
+        background-color: var(--white);
     }
 
     @include MediaQuery.tablet {

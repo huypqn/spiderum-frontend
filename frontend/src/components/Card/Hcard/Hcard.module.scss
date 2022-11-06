@@ -18,7 +18,9 @@
 
     &::after {
         content: "";
-        @include Card.dot()
+        @include Card.dot() {
+            right: -1.2rem;
+        }
     }
 }
 //--------------------------------------

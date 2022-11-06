@@ -1,0 +1,72 @@
+@use '../../../../../components/GlobalStyles/MediaQuery.scss';
+// mobile topic
+.topic {
+
+    .title {
+        margin-bottom: 2rem;
+        font-weight: 600;
+        font-size: 1.4rem;
+    }
+
+    &.topicMobile {
+        display: none;
+    }
+}
+
+.topicSideBar {
+    .title {
+        margin: 1.5rem 0;
+        font-weight: 600;
+    }
+}
+
+.categoryMobile {
+    max-height: 9.2rem;
+    overflow: hidden;
+}
+
+.category {
+    text-transform: capitalize;
+    a {
+        margin: {
+            right: 0.6rem;
+            bottom: 0.8rem;
+        }
+    }
+    .topicMobileShow button {
+        background-color: var(--brand-blue);   
+
+        &:hover {
+            background-color: var(--blue-darker);
+        }
+    }
+}
+
+.show {
+    max-height: 100rem;
+    overflow: visible;
+}
+
+
+// responsive
+@include MediaQuery.tablet {
+
+    .topic.topicMobile {
+        display: block;
+    }
+
+    .topicSideBar {
+        display: none;
+    }
+}
+
+@include MediaQuery.mobile {
+
+    .topic.topicMobile {
+        display: block;
+    }
+
+    .topicSideBar {
+        display: none;
+    }
+}

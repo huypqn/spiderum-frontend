@@ -1,9 +1,8 @@
-import { useState, useMemo, useEffect } from 'react'
+import { useState, useMemo } from 'react'
 import clsx from "clsx"
 import Button from "../Button"
 import styles from './Pagination.module.scss'
 import pageList from '~/utils/pageList'
-import { dataService } from '~/services'
 
 function Pagination({ pagination, maxSize = 10 }) {
 
@@ -21,17 +20,6 @@ function Pagination({ pagination, maxSize = 10 }) {
     const handlePrev = () => {
         setActive(prevState => prevState - 1)
     }
-
-    useEffect(() => {
-        const fetchData = async() => {
-            const result = await dataService.getPosts({
-                page: 2,
-                limit: 8
-            })
-            console.log(result);
-        }
-        fetchData()
-    }, [])
 
     return (
         <div className={clsx(styles.wrapper)}>

@@ -1,13 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import clsx from 'clsx'
 
 import styles from './Home.module.scss'
 import Banner from './Banner'
 import { Hcard, Vcard } from '~/components/Card'
 import Button from '~/components/Button'
-import Pagination from '~/components/Pagination'
 import { dataService } from '~/services'
 import { icons, images } from '~/assets'
+import MainContent from './MainContent'
+
 
 function Home() {
 
@@ -15,31 +16,20 @@ function Home() {
     const [trending, setTrending] = useState([])
 
     useEffect(() => {
-        const fetchPopular = async() => {
+        const fetchData = async() => {
             try {
-                const popularPosts = await dataService.getPosts({
-                    type: "popular"
-                })
-                setPopular(popularPosts)
-            } catch (error) {
-                throw Error(error)
-            }
-        }
-        fetchPopular()
-    }, [])
+                const [popularPosts, trendingPosts] = await Promise.all([
+                    dataService.getPosts({type: "popular"}),
+                    dataService.getPosts({type: "trending"}),
+                ])
+                setPopular(popularPosts.data)
+                setTrending(trendingPosts.data)
 
-    useEffect(() => {
-        const fetchTrending = async() => {
-            try {
-                const trendingPosts = await dataService.getPosts({
-                    type: "trending"
-                })
-                setTrending(trendingPosts)
             } catch (error) {
                 throw Error(error)
             }
         }
-        fetchTrending()
+        fetchData()
     }, [])
 
     return (
@@ -62,8 +52,8 @@ function Home() {
                 </Button>
             </section>
 
-            <div className={clsx(styles.trendingSection)}>
-                <section className="grid wide pad-16">
+            <section className={clsx(styles.trendingSection)}>
+                <div className="grid wide pad-16">
                     <div className={clsx(styles.title)}>
                         <span>NỔI BẬT TRONG THÁNG</span>
                         <Button className={clsx(styles.top10)} to="/">
@@ -75,8 +65,8 @@ function Home() {
                         {
                             trending.map((post, index) => {
                                 return (
-                                    <div className='flex'>
-                                        <Vcard key={index} data={post} />
+                                    <div className='flex' key={index}>
+                                        <Vcard key={index} data={post} date/>
                                     </div>
                                 )
                             })
@@ -87,11 +77,11 @@ function Home() {
                             Xem TOP 10 bài viết <img src={icons.arrow} alt="arrow icon"/>
                         </span>
                     </Button>
-                </section>
-            </div>
+                </div>
+            </section>
 
+            <MainContent />
             
-
         </div>
     )
 }
