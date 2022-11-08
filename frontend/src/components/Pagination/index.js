@@ -4,7 +4,7 @@ import Button from "../Button"
 import styles from './Pagination.module.scss'
 import pageList from '~/utils/pageList'
 
-function Pagination({ pagination, maxSize = 10 }) {
+function Pagination({ pagination, onPageChange, maxSize = 10 }) {
 
     const { page, limit, total } = pagination
     const [active, setActive] = useState(page)
@@ -15,10 +15,12 @@ function Pagination({ pagination, maxSize = 10 }) {
     
     const handleNext = () => {
         setActive(prevState => prevState + 1)
+        onPageChange(active + 1)
     }
 
     const handlePrev = () => {
         setActive(prevState => prevState - 1)
+        onPageChange(active - 1)
     }
 
     return (

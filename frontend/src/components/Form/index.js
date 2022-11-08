@@ -78,6 +78,9 @@ function Form({ className, children, ...props }) {
                                 htmlFor={field.id}
                             >
                                 {field.label}
+                                {props.rules[`#${field.id}`].includes("require") && (
+                                    <span className={styles.asterisk}>&nbsp;*</span>
+                                )}
                             </label>
                             <input
                                 id={field.id}

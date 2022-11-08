@@ -67,10 +67,6 @@ class FormValidator {
         }
     }
 
-    submitData() {
-        
-    }
-
     validateAll() {
         const inputs = this.form.querySelectorAll('input')
         let isPassed = true

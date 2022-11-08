@@ -8,7 +8,6 @@ import Form from '~/components/Form'
 import { Hcard } from '~/components/Card'
 import Pagination from '~/components/Pagination'
 import { dataService } from '~/services'
-import { pageConfig } from '~/config'
 import { images } from '~/assets'
 
 function MainContent({ sort }) {
@@ -16,11 +15,16 @@ function MainContent({ sort }) {
     const [feed, setFeed] = useState({})
     const [feedTab, setFeedTab] = useState("hot")
     const [pagination, setPagination] = useState()
+    const [filters, setFilters] = useState({
+        page: 1,
+        limit: 15
+    })
+    console.log(filters);
 
     useEffect(() => {
         const fetchData = async() => {
             try {
-                const newFeed = await dataService.getPosts(pageConfig)
+                const newFeed = await dataService.getPosts(filters)
                 setFeed(newFeed)
                 setPagination(newFeed.pagination)
             } catch (error) {
@@ -28,7 +32,14 @@ function MainContent({ sort }) {
             }
         }
         fetchData()
-    }, [feedTab])
+    }, [filters])
+
+    const handlePageChange = (newPage) => {
+        setFilters(prevState => ({
+            ...prevState,
+            page: newPage
+        }))
+    }
 
     return (
         <div className={styles.wrapper}>
@@ -72,7 +83,11 @@ function MainContent({ sort }) {
                         })
                     }
                     {
-                        pagination && <Pagination pagination={pagination}/>
+                        pagination && (
+                            <Pagination
+                            pagination={pagination}
+                            onPageChange={handlePageChange}
+                        />)
                     }
                 </section>
                 <aside className={styles.sideBar}>
@@ -103,7 +118,7 @@ function MainContent({ sort }) {
                         }}
                         rules={{
                             "#email": ["require", "email"],
-                            "#name": ["require", "min:6"]
+                            "#name": ["require"]
                         }}
                     >
                     </Form>
