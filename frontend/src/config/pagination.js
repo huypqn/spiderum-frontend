@@ -1,7 +1,7 @@
 
 const pageConfig = {
     "page": 1,
-    "limit": 5
+    "limit": 20
 }
 
 export default pageConfig

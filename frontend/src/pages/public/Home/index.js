@@ -8,7 +8,7 @@ import Button from '~/components/Button'
 import { dataService } from '~/services'
 import { icons, images } from '~/assets'
 import MainContent from './MainContent'
-
+import ScrollToTop from '~/components/ScrollToTop'
 
 function Home() {
 
@@ -79,9 +79,8 @@ function Home() {
                     </Button>
                 </div>
             </section>
-
             <MainContent />
-            
+            <ScrollToTop />
         </div>
     )
 }

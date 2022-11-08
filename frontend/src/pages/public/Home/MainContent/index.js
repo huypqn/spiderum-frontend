@@ -4,10 +4,12 @@ import clsx from "clsx"
 import styles from './MainContent.module.scss'
 import Topic from './Topic'
 import Button from '~/components/Button'
+import Form from '~/components/Form'
 import { Hcard } from '~/components/Card'
 import Pagination from '~/components/Pagination'
 import { dataService } from '~/services'
 import { pageConfig } from '~/config'
+import { images } from '~/assets'
 
 function MainContent({ sort }) {
 
@@ -26,11 +28,11 @@ function MainContent({ sort }) {
             }
         }
         fetchData()
-    }, [])
+    }, [feedTab])
 
     return (
         <div className={styles.wrapper}>
-            <Topic mobile/>
+            <Topic className="topicMobile" mobile/>
 
             <main className={clsx("grid wide pad-16", styles.mainContent)}>
                 <section className={styles.content}>
@@ -74,7 +76,43 @@ function MainContent({ sort }) {
                     }
                 </section>
                 <aside className={styles.sideBar}>
-                    <Topic />
+                    <Topic className="topicSideBar" />
+                    <Form
+                        title={<>NHỮNG BÀI VIẾT <span style={{color: '#3d85c6'}}>NỔI BẬT</span> BẠN KHÔNG NÊN BỎ LỠ!</>}
+                        desc="Thứ Năm hàng tuần, bạn sẽ nhận được email từ Spiderum tổng hợp những bài viết đáng đọc nhất tuần qua."
+                        border
+                        fields={[
+                            {
+                                "id": "email",
+                                "label": "Email của bạn là:",
+                                "type": "email",
+                                "placeholder": "linh.phuong@gmail.com"
+                            },
+                            {
+                                "id": "name",
+                                "label": "Chúng mình có thể gọi bạn là:",
+                                "type": "text",
+                                "placeholder": "Nguyễn Phương Linh"
+                            }
+                        ]}
+                        button={{
+                            "text": "Đăng ký!",
+                            "type": "primary",
+                            "border": "rounded",
+                            "size": "medium"
+                        }}
+                        rules={{
+                            "#email": ["require", "email"],
+                            "#name": ["require", "min:6"]
+                        }}
+                    >
+                    </Form>
+                    <Button
+                        className={styles.sidebarBanner}
+                        to="#"
+                    >
+                        <img src={images.home_sidebar_banner} alt="sidebar banner"/>
+                    </Button>
                 </aside>
             </main>
         </div>

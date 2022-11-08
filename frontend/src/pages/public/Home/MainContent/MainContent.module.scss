@@ -32,6 +32,15 @@
     border-bottom: 3px solid var(--brand-blue);
 }
 
+// sidebar banner
+.sidebarBanner {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    img {
+        width: 100%;
+    }
+}
 
 // responsive
 @include MediaQuery.tablet {
@@ -43,11 +52,27 @@
             margin-top: 2rem;
         }
     }
+
+    .formContainer {
+        display: none;
+    }
+
+    .sidebarBanner {
+        display: none;
+    }
 }
 
 @include MediaQuery.mobile {
 
     .mainContent {
         grid-template-columns: 1fr;
+    }
+
+    .formContainer {
+        display: none;
+    }
+
+    .sidebarBanner {
+        display: none;
     }
 }

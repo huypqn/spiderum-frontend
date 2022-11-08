@@ -44,7 +44,7 @@
 
 .show {
     max-height: 100rem;
-    overflow: visible;
+    transition: max-height 0.3s ease-in-out;
 }
 
 
@@ -62,10 +62,11 @@
 
 @include MediaQuery.mobile {
 
+    
     .topic.topicMobile {
         display: block;
     }
-
+    
     .topicSideBar {
         display: none;
     }

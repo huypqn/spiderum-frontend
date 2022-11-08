@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import Button from '~/components/Button'
 import styles from './Vcard.module.scss'
 import { icons } from '~/assets'
-import { routesPath, pathName } from '~/config'
+import { pathName } from '~/config'
 import { vnEncodeUrl } from '~/utils'
 
 function Vcard({ className, data, ...otherProps }) {

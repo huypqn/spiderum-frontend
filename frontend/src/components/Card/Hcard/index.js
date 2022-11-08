@@ -17,7 +17,10 @@ function Hcard({ className, data, ...otherProps }) {
             <div className={clsx(styles.thumbnail, {
                 [styles.trending]: otherProps.trending,
             })}>
-                <Button className={clsx(styles.thumbLink)} to={data.url}>
+                <Button
+                    className={clsx(styles.thumbLink)}
+                    to={`${pathName.post}/${vnEncodeUrl(data.title)}`}
+                >
                     <img src={data.thumbnail} alt="post's thumbnail" />
                 </Button>
             </div>

@@ -6,7 +6,7 @@ import { dataService } from "~/services"
 import { pathName } from "~/config"
 import { vnEncodeUrl } from "~/utils"
 
-function Topic({ mobile }) {
+function Topic({ className, mobile }) {
 
     const [topics, setTopics] = useState([])
     const [topicShow, setTopicShow] = useState(false)
@@ -31,8 +31,7 @@ function Topic({ mobile }) {
     }
 
     return (
-        <section className={clsx(styles.topic, {
-            [styles.topicMobile]: mobile,
+        <section className={clsx(styles.topic, styles[className], {
             "grid wide pad-16": mobile,
         })}>
             <div className={clsx(styles.title)}>CHỦ ĐỀ</div>
