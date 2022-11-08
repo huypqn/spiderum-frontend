@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
+import LazyLoad from 'react-lazyload'
 import clsx from 'clsx'
 
 import styles from './Home.module.scss'
 import Banner from './Banner'
 import { Hcard, Vcard } from '~/components/Card'
 import Button from '~/components/Button'
+import Loading from '~/components/Loading'
 import { dataService } from '~/services'
 import { icons, images } from '~/assets'
 import MainContent from './MainContent'
@@ -39,17 +41,23 @@ function Home() {
                 <span className={clsx(styles.title)}>PHỔ BIẾN TRÊN SPIDERUM</span>
                 <div className={clsx(styles.popularPost)}>
                 {
-                    popular.map((post, index) => {
-                        return <Hcard key={index} data={post} trending view/>
-                    })
+                    Array.isArray(popular) && popular.map((post, index) => {
+                        return (
+                            <LazyLoad key={index} placeholder={<Loading/>}>
+                                <Hcard data={post} trending view/>
+                            </LazyLoad>
+                        )
+                    })  
                 }
                 </div>
-                <Button
-                    className={clsx(styles.popularBanner)}
-                    href="https://b.link/SP-Web-Combo-Seneca"
-                >
-                    <img src={images.home_popular_banner} alt="combo seneca banner" />
-                </Button>
+                <LazyLoad placeholder={<Loading />}>
+                    <Button
+                        className={clsx(styles.popularBanner)}
+                        href="https://b.link/SP-Web-Combo-Seneca"
+                    >
+                        <img src={images.home_popular_banner} alt="combo seneca banner" />
+                    </Button>
+                </LazyLoad>
             </section>
 
             <section className={clsx(styles.trendingSection)}>
@@ -63,11 +71,13 @@ function Home() {
 
                     <div className={clsx(styles.trendingContent)}>
                         {
-                            trending.map((post, index) => {
+                            Array.isArray(trending) && trending.map((post, index) => {
                                 return (
-                                    <div className='flex' key={index}>
-                                        <Vcard key={index} data={post} date/>
-                                    </div>
+                                    <LazyLoad key={index} placeholder={<Loading/>}>
+                                        <div className='flex'>
+                                            <Vcard data={post} date/>
+                                        </div>
+                                    </LazyLoad>
                                 )
                             })
                         }

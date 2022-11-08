@@ -51,7 +51,8 @@ function Form({ className, children, ...props }) {
             ref={formRef}
             id={styles.formContainer}
             className={clsx({
-                [styles.border]: props.border, ...className
+                [styles.border]: props.border,
+                [className]: className
             })}
             action=""
             method="POST"

@@ -10,6 +10,7 @@
     display: grid;
     grid-template-columns: 2fr 1fr;
     column-gap: 4rem;
+    align-items: start;
 
     .content {
         display: grid;
@@ -34,7 +35,9 @@
 
 // sidebar banner
 .sidebarBanner {
-
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
     img {
         width: 100%;
     }
@@ -58,6 +61,10 @@
     .sidebarBanner {
         display: none;
     }
+
+    .sidebarForm {
+        display: none;
+    }
 }
 
 @include MediaQuery.mobile {
@@ -71,6 +78,10 @@
     }
 
     .sidebarBanner {
+        display: none;
+    }
+
+    .sidebarForm {
         display: none;
     }
 }

@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect, memo } from 'react'
 import clsx from "clsx"
 import Button from "../Button"
 import styles from './Pagination.module.scss'
@@ -15,13 +15,16 @@ function Pagination({ pagination, onPageChange, maxSize = 10 }) {
     
     const handleNext = () => {
         setActive(prevState => prevState + 1)
-        onPageChange(active + 1)
     }
 
     const handlePrev = () => {
         setActive(prevState => prevState - 1)
-        onPageChange(active - 1)
     }
+
+    useEffect(() => {
+        onPageChange(active)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [active])
 
     return (
         <div className={clsx(styles.wrapper)}>
@@ -58,4 +61,4 @@ function Pagination({ pagination, onPageChange, maxSize = 10 }) {
     )
 }
 
-export default Pagination
+export default memo(Pagination)

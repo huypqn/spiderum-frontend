@@ -46,7 +46,7 @@ class FormValidator {
         for (const selector in this.rules) {
             this.rules[selector] = this.rules[selector].map(rule => {
                 let test = FormValidator.validateTests[rule]
-                if (rule?.includes(':')) {
+                if (Array.isArray(rule) && rule.includes(':')) {
                     const ruleData = rule.split(':')
                     rule = ruleData[0]
                     test = FormValidator.validateTests[rule](ruleData[1])

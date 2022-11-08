@@ -39,7 +39,7 @@ function Topic({ className, mobile }) {
                 [styles.categoryMobile]: mobile
             })} ref={categoryRef}>
                 {
-                    topics.map((topic) => {
+                    Array.isArray(topics) && topics.map((topic) => {
                         return (
                             <Button
                                 key={topic.id}
