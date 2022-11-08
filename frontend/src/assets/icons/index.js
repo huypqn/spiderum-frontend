@@ -15,6 +15,9 @@ const icons = {
     upvote: require('~/assets/icons/upvote.svg').default,
     comment: require('~/assets/icons/comment.svg').default,
     view: require('~/assets/icons/view.svg').default,
+    arrow: require('~/assets/icons/arrow.svg').default,
+    scroll: require('~/assets/icons/scroll.svg').default,
+    error: require('~/assets/icons/error404.png')
 }
 
 export default icons

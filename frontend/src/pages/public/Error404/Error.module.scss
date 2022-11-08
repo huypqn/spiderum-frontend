@@ -1,0 +1,63 @@
+@use '../../../components/GlobalStyles/MediaQuery.scss';
+
+.wrapper {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+    opacity: 0.9;
+    
+    img {
+        width: 40%;
+    }
+}
+
+#error {
+    display: inline-block;
+    padding: 0.2rem 4.8rem;
+    color: var(--white);
+    font-size: 3.6rem;
+    font-weight: 700;
+    background-color: #ffbd45;
+    border-radius: 0.8rem;
+}
+
+#notFound {
+    margin-top: 0.8rem;
+    font-size: 3.5rem;
+    font-weight: 700;
+}
+
+#desc {
+    margin-top: 0.8rem;
+    font-size: 1.8rem;
+    font-weight: 400;
+}
+
+#backBtn {
+    margin-top: 1.6rem;
+    display: inline-block;
+    font-size: 2rem;
+    color: var(--white);
+    background-color: var(--blue-light);
+}
+
+@include MediaQuery.mobile {
+
+    .wrapper img {
+        width: 74%;
+    }
+
+    .error {
+        font-size: 2rem;
+    }
+
+    #notFound {
+        font-size: 2rem;
+    }
+
+    #desc {
+        font-size: 1.6rem;
+    }
+}

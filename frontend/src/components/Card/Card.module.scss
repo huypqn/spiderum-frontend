@@ -6,18 +6,17 @@ $avatar-lg: 4.8rem;
 @mixin dot {
     position: absolute;
     top: 50%;
-    right: -1.2rem;
     transform: translateY(-50%);
     width: 0.4rem;
     height: 0.4rem;
     border-radius: 50%;
     background-color: #909399;
     opacity: 0.6;
+    @content
 }
 
 .thumbnail {
     a {
-        display: block;
         width: 100%;
         height: 100%;
     }
@@ -31,16 +30,16 @@ $avatar-lg: 4.8rem;
     }
 }
 
-
-
 .detail {
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
     flex-direction: column;
 }
 
 .detailHeader {
 
     justify-content: space-between;
-    margin-bottom: 0.4rem;
     
     .headerRight {
         opacity: 0.5;
@@ -54,7 +53,10 @@ $avatar-lg: 4.8rem;
 }
 
 .title {
-    justify-content: flex-start;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
     max-height: 6rem;
     font-size: 2rem;
     font-weight: 600;
@@ -63,7 +65,8 @@ $avatar-lg: 4.8rem;
 
 .detailFooter {
     align-items: center;
-    justify-content: space-between;  
+    justify-content: space-between;
+    margin-top: auto;
 }
 
 .footerLeft {
@@ -80,10 +83,16 @@ $avatar-lg: 4.8rem;
         margin-right: 1.6rem;
         font-size: 1.4rem;
         font-weight: 600;
+    }
 
-        &::after {
+    .time {
+        display: none;
+
+        &::before {
             content: "";
-            @include dot()
+            @include dot() {
+                left: -1rem;
+            }
         }
     }
 }
@@ -92,6 +101,11 @@ $avatar-lg: 4.8rem;
     font-size: 1.2rem;
     font-weight: 400;
     color: #909399;
+}
+
+.time.dateShow {
+    position: relative;
+    display: inline-block;
 }
 
 .avatar-lg {
@@ -110,7 +124,6 @@ $avatar-lg: 4.8rem;
 
 // extra
 .extra {
-    overflow: hidden;
     opacity: 0.5;
 
     img {
@@ -122,7 +135,7 @@ $avatar-lg: 4.8rem;
     }
 
     button + button {
-        margin-left: 1.6rem;
+        margin-left: 1rem;
     }
 }
 

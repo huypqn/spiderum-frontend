@@ -1,0 +1,29 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: block;
+    padding: 0.3rem 1rem;
+    color: #555;
+    min-width: 4rem;
+    min-height: 4rem;
+    margin: 0 0.8rem;
+    line-height: 3.2rem;
+
+    &:hover {
+        background-color: #e6e6e6;
+    }
+
+    &.active {
+        color: #fefefe;
+        background-color: var(--blue-light);
+    }
+}
+
+.hide {
+    display: none;
+}

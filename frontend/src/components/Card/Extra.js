@@ -15,14 +15,14 @@ function Extra({ className, data, ...props}) {
             )}
             { props.comment && (
                 <Button>
-                    <img src={icons.comment} alt=" comment icon" />
-                    <span>{data.comments}</span>
+                    <img src={icons.comment} alt="comment icon" />
+                    <span>{data.comment}</span>
                 </Button>
             )}
             { props.view && (
                 <Button>
-                    <img src={icons.view} alt=" view icon" />
-                    <span>{data.seen}</span>
+                    <img src={icons.view} alt="view icon" />
+                    <span>{data.view}</span>
                 </Button>
             )}
         </div>

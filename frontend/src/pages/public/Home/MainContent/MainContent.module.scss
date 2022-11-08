@@ -1,0 +1,87 @@
+@use '../../../../components/GlobalStyles/MediaQuery.scss';
+
+
+.wrapper {
+    margin-top: 3.2rem;
+}
+
+// main content
+.mainContent {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    column-gap: 4rem;
+    align-items: start;
+
+    .content {
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 4.8rem;
+    }
+}
+
+.contentNav {
+    .navBtn {
+        & + .navBtn {
+            margin-left: 2rem;
+        }
+        padding: 0.8rem;
+        font-size: 1.4rem;
+    }
+}
+
+.activeTab {
+    border-bottom: 3px solid var(--brand-blue);
+}
+
+// sidebar banner
+.sidebarBanner {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    img {
+        width: 100%;
+    }
+}
+
+// responsive
+@include MediaQuery.tablet {
+
+    .mainContent {
+        grid-template-columns: 1fr;
+
+        .contentNav {
+            margin-top: 2rem;
+        }
+    }
+
+    .formContainer {
+        display: none;
+    }
+
+    .sidebarBanner {
+        display: none;
+    }
+
+    .sidebarForm {
+        display: none;
+    }
+}
+
+@include MediaQuery.mobile {
+
+    .mainContent {
+        grid-template-columns: 1fr;
+    }
+
+    .formContainer {
+        display: none;
+    }
+
+    .sidebarBanner {
+        display: none;
+    }
+
+    .sidebarForm {
+        display: none;
+    }
+}

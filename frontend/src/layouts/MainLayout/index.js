@@ -5,7 +5,7 @@ function MainLayout({ children }) {
     return (
         <>
             <Header />
-            <div className="container" style={{marginTop: 100}}>
+            <div className="container">
                 {children}
             </div>
             <Footer />

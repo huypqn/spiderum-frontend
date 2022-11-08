@@ -1,13 +1,31 @@
 @use '../../GlobalStyles/MediaQuery.scss';
 @use '../Card.module.scss';
 
-.detail {
+.wrapper {
+    display: flex;
+    flex-direction: column;
     flex: 1;
 }
 
+.detail {
+    flex: 1;
+    .detailHeader {
+        margin-top: 0.8rem;
+    }
+}
+
+
 @include MediaQuery.mobile {
-    
+
+    .wrapper {
+        flex-direction: row;
+    }
+
     .thumbnail {
-        width: 24%;
-    }    
+        width: 28%;
+    }
+
+    .detail .detailHeader {
+        margin-top: 0;
+    }
 }

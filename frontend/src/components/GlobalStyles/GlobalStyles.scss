@@ -28,6 +28,7 @@
 
 html {
     font-size: 62.5%;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -47,6 +48,7 @@ input,
 a {
     text-decoration: none;
     color: var(--black);
+    background-color: transparent;
 }
 
 .flex {

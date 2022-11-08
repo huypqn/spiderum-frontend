@@ -3,15 +3,13 @@ import { routing } from '~/routes'
 
 function App() {
 
-  let element = useRoutes(routing(false))
+    let element = useRoutes(routing(false))
 
-  return (
-
-        <div className='App' style={{height: 1200}}>
+     return (
+        <div className='App'>
             {element}
         </div>
-
-  )
+    )
 }
 
 export default App;

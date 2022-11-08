@@ -10,12 +10,37 @@ function Header() {
     const [modalStatus, setModalStatus] = useState(false)
 
     const searchBox = useRef()
+    const wrapperRef = useRef()
 
     useEffect(() =>  {
         if (modalStatus) {
             searchBox.current.focus()
         }
     }, [modalStatus])
+
+    let prevScrollPosition = window.scrollY
+    const handleHeaderShow = () => {
+        const currentScrollPosition = window.scrollY;
+        if (prevScrollPosition > currentScrollPosition) {
+            wrapperRef.current.style.top = "0";
+        }
+        else {
+            wrapperRef.current.style.top = "-100%";
+        }
+        prevScrollPosition = currentScrollPosition;
+    }
+
+    useEffect(() => {
+        if (wrapperRef && wrapperRef.current) {
+            window.addEventListener("scroll", handleHeaderShow)
+        }
+
+        return function cleanup() {
+            window.removeEventListener("scroll", handleHeaderShow)
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [wrapperRef])
+
 
     const openSearchBox = (event) => {
         setModalStatus(true)
@@ -27,7 +52,7 @@ function Header() {
     }
 
     return (
-        <header className={clsx(styles.wrapper, "flex")}>
+        <header className={clsx(styles.wrapper, "flex")} ref={wrapperRef}>
             <nav className={clsx(styles.navbar, "grid wide pad-16 flex")}>
                 <div className={clsx(styles.leftNav, "flex")}>
                     <Button className={clsx(styles.brandLogo)} to={routesPath.home}>

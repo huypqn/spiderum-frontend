@@ -1,93 +1,96 @@
+import { useEffect, useState } from 'react'
+import LazyLoad from 'react-lazyload'
 import clsx from 'clsx'
+
 import styles from './Home.module.scss'
-import Button from '~/components/Button'
+import Banner from './Banner'
 import { Hcard, Vcard } from '~/components/Card'
+import Button from '~/components/Button'
+import Loading from '~/components/Loading'
+import { dataService } from '~/services'
+import { icons, images } from '~/assets'
+import MainContent from './MainContent'
+import ScrollToTop from '~/components/ScrollToTop'
 
 function Home() {
 
-    const data = [
-        {
-            "id": 1,
-            "title": "5 giai đoạn thay đổi bản thân",
-            "author": "Viet Anh Tran",
-            "username": "please",
-            "topic": "quan điểm tranh luận",
-            "publishAt": "21 Th10",
-            "timeToRead": "17 phút đọc",
-            "upvote": 209,
-            "comments": 28,
-            "desc": "Trong mỗi chúng ta ai ai cùng đều có khát vọng được vươn lên, muốn được người khác coi trọng, nói đúng hơn là làm \"Ông này bà nọ\"",
-            "seen": 2408,
-            "url": "/post",
-            "thumbnail": "https://images.spiderum.com/sp-thumbnails/08075570543d11ed876f794cb3e9e345.png",
-            "avatar": "https://images.spiderum.com/sp-xs-avatar/f2eebc60eb8211eba7d9d3760b47d866.jpg"
-        },
-        {
-            "id": 1,
-            "title": "Nhật ký vượt bão của một nhà đầu tư thích viết lách",
-            "author": "Viet Anh Tran",
-            "username": "dontgo",
-            "topic": "quan điểm tranh luận",
-            "publishAt": "21 Th10",
-            "timeToRead": "17 phút đọc",
-            "upvote": 209,
-            "comments": 28,
-            "desc": "Mình từng nghe rất nhiều người nói: \"Phải làm chủ chứ đi làm thuê thì làm sao mà giàu được?\". Thoạt nghe qua thì câu nói này có vẻ",
-            "seen": 2408,
-            "url": "/post",
-            "thumbnail": "https://images.spiderum.com/sp-thumbnails/08075570543d11ed876f794cb3e9e345.png",
-            "avatar": "https://images.spiderum.com/sp-xs-avatar/f2eebc60eb8211eba7d9d3760b47d866.jpg"
+    const [popular, setPopular] = useState([])
+    const [trending, setTrending] = useState([])
+
+    useEffect(() => {
+        const fetchData = async() => {
+            try {
+                const [popularPosts, trendingPosts] = await Promise.all([
+                    dataService.getPosts({type: "popular"}),
+                    dataService.getPosts({type: "trending"}),
+                ])
+                setPopular(popularPosts.data)
+                setTrending(trendingPosts.data)
+
+            } catch (error) {
+                throw Error(error)
+            }
         }
-    ]
-  
+        fetchData()
+    }, [])
+
     return (
         <div>
-            <div className={clsx(styles.homeBanner, "flex")}>
+            <Banner />
+            <section className={clsx('grid wide pad-16', styles.popularSection)}>
+                <span className={clsx(styles.title)}>PHỔ BIẾN TRÊN SPIDERUM</span>
+                <div className={clsx(styles.popularPost)}>
+                {
+                    Array.isArray(popular) && popular.map((post, index) => {
+                        return (
+                            <LazyLoad key={index} placeholder={<Loading/>}>
+                                <Hcard data={post} trending view/>
+                            </LazyLoad>
+                        )
+                    })  
+                }
+                </div>
+                <LazyLoad placeholder={<Loading />}>
+                    <Button
+                        className={clsx(styles.popularBanner)}
+                        href="https://b.link/SP-Web-Combo-Seneca"
+                    >
+                        <img src={images.home_popular_banner} alt="combo seneca banner" />
+                    </Button>
+                </LazyLoad>
+            </section>
+
+            <section className={clsx(styles.trendingSection)}>
                 <div className="grid wide pad-16">
-                    <div className={clsx(styles.homeBannerContent)}>
-                        <h1 className={clsx(styles.bannerHeading)}>
-                            Góc nhìn đa chiều của thế hệ trẻ Việt Nam
-                        </h1>
-                        <div className={clsx(styles.bannerDetail)}>
-                            Viết - Chia sẻ - Kết nối - Chiêm nghiệm <br/>
-                            Tất cả tại Spiderum
-                        </div>
-                        <Button
-                            className={clsx(styles.bannerButton)}
-                            type="outline" size="large" border="rounded"
-                        >
-                            Đăng bài viết
+                    <div className={clsx(styles.title)}>
+                        <span>NỔI BẬT TRONG THÁNG</span>
+                        <Button className={clsx(styles.top10)} to="/">
+                            <span>Xem TOP 10 bài viết</span>
                         </Button>
                     </div>
-                </div>
-            </div>
-            
-            <div className='grid wide pad-16'>
 
-                <div className={clsx(styles.test)}>
-                    <Hcard data={data[0]} trending></Hcard>
-                    <Hcard data={data[1]} trending></Hcard>
-                    <Hcard data={data[0]} trending></Hcard>
-                    <Hcard data={data[1]} trending></Hcard>
-                </div>
-
-                <div className='row'>
-                    <Vcard className='col lg-3 md-6 sm-12' data={data[0]}></Vcard>
-                    <Vcard className='col lg-3 md-6 sm-12' data={data[1]}></Vcard>
-                    <Vcard className='col lg-3 md-6 sm-12' data={data[0]}></Vcard>
-                    <Vcard className='col lg-3 md-6 sm-12' data={data[1]}></Vcard>
-                </div>
-                
-                <div className='row' style={{paddingTop: 100}}>
-                    <div className='col lg-8'>
-                        <Hcard data={data[0]} upvote comment></Hcard>
-                        <Hcard data={data[1]} view></Hcard>
-
+                    <div className={clsx(styles.trendingContent)}>
+                        {
+                            Array.isArray(trending) && trending.map((post, index) => {
+                                return (
+                                    <LazyLoad key={index} placeholder={<Loading/>}>
+                                        <div className='flex'>
+                                            <Vcard data={post} date/>
+                                        </div>
+                                    </LazyLoad>
+                                )
+                            })
+                        }
                     </div>
-                    <div className='col lg-4'></div>
+                    <Button className={clsx(styles.top10Bottom)}>
+                        <span>
+                            Xem TOP 10 bài viết <img src={icons.arrow} alt="arrow icon"/>
+                        </span>
+                    </Button>
                 </div>
-
-            </div>
+            </section>
+            <MainContent />
+            <ScrollToTop />
         </div>
     )
 }
