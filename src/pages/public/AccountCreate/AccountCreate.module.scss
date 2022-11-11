@@ -1,0 +1,110 @@
+
+.notify {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem 0;
+    font-size: 1.4rem;
+    color: var(--brand-blue);
+    background-color: #f2fae3;
+    border: 1px solid var(--blue-light);
+
+    &.success {
+        color: #659f13;
+        border-color: rgba(101,159,19,.3);
+    }
+
+    &.failure {
+        color: #f33a58;
+        border-color: rgba(243, 58, 88, .3);
+    }
+
+    .notifyContent {
+        padding-left: 1.2rem;
+    }
+
+    .close {
+        height: 100%;
+        width: 3rem;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 700;
+        display: inline-block;
+        cursor: pointer;
+    }
+}
+
+
+
+.container {
+    position: absolute;
+    top: 54%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-bottom: 2rem;
+    width: 36rem;
+    color: #666;
+    font-size: 1.4rem;
+    overflow-y: scroll;
+
+    .brandLogo {
+        margin-bottom: 1.6rem;
+        text-align: center;
+        img {
+            width: 28%;
+        }
+    }
+}
+
+.registerForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .group {
+        input {
+            width: 100%;
+            height: 4.2rem;
+            background-color: var(--white);
+        }
+    }
+
+    .moreBtn {
+        color: #666;
+        background-color: #f7f7f7;
+    }
+
+    .moreField {
+        flex-direction: column;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s linear;
+
+        &.show {
+            max-height: 12rem;
+        }
+    }
+
+    .agreement {
+        margin-bottom: 1.4rem;
+
+        .highlight {
+            display: inline;
+            font-size: 1.4rem;
+            color: var(--brand-blue);
+        }
+    }
+}
+
+.mgbt {
+    margin-bottom: 1.4rem;
+}
+
+.spacer {
+    height: 2rem;
+}
+
+.show {
+    display: flex;
+}

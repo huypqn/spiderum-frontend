@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, memo } from 'react'
+import { useState, useMemo, useEffect, useRef, memo } from 'react'
 import clsx from "clsx"
 import Button from "../Button"
 import styles from './Pagination.module.scss'
@@ -8,6 +8,7 @@ function Pagination({ pagination, onPageChange, maxSize = 10 }) {
 
     const { page, limit, total } = pagination
     const [active, setActive] = useState(page)
+    const isReload = useRef(false)
 
     const pages = useMemo(() => Math.ceil(total / limit), [limit, total])
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -22,7 +23,10 @@ function Pagination({ pagination, onPageChange, maxSize = 10 }) {
     }
 
     useEffect(() => {
-        onPageChange(active)
+        if (isReload.current) {
+            onPageChange(active)
+        }
+        isReload.current = true
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [active])
 

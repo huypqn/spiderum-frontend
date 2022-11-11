@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import clsx from 'clsx'
-
+import LazyLoad  from 'react-lazyload'
 import styles from './Home.module.scss'
 import Banner from './Banner'
 import { Hcard, Vcard } from '~/components/Card'
@@ -41,17 +41,21 @@ function Home() {
                 {
                     Array.isArray(popular) && popular.map((post, index) => {
                         return (
-                            <Hcard key={index} data={post} trending view/>
+                            <LazyLoad key={index} height={200} offset={-100}>
+                                <Hcard data={post} trending view/>
+                            </LazyLoad>
                         )
                     })  
                 }
                 </div>
-                <Button
-                    className={clsx(styles.popularBanner)}
-                    href="https://b.link/SP-Web-Combo-Seneca"
-                >
-                    <img src={images.home_popular_banner} alt="combo seneca banner" loading="lazy"/>
-                </Button>
+                <LazyLoad height={200} offset={-100}>
+                    <Button
+                        className={clsx(styles.popularBanner)}
+                        href="https://b.link/SP-Web-Combo-Seneca"
+                    >
+                        <img src={images.home_popular_banner} alt="combo seneca banner" loading="lazy"/>
+                    </Button>
+                </LazyLoad>
             </section>
 
             <section className={clsx(styles.trendingSection)}>
@@ -67,7 +71,9 @@ function Home() {
                         {
                             Array.isArray(trending) && trending.map((post, index) => {
                                 return (
-                                    <Vcard key={index} data={post} date/>
+                                    <LazyLoad key={index} height={200} offset={-100}>
+                                        <Vcard data={post} date/>
+                                    </LazyLoad>
                                 )
                             })
                         }

@@ -1,3 +1,5 @@
+@use '../../components/GlobalStyles/MediaQuery.scss';
+
 .scrollBtn {
     position: fixed;
     bottom: 5.2rem;
@@ -10,3 +12,16 @@
     transition: transform 0.2s ease-in;
     cursor: pointer;    
 }
+
+@include MediaQuery.tablet {
+    .scrollBtn {
+        right: 2.4rem;
+    }
+}
+
+@include MediaQuery.mobile {
+    .scrollBtn {
+        right: 2.4rem;
+    }
+}
+

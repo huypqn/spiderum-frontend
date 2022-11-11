@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef, memo } from 'react'
 import clsx from "clsx"
+import LazyLoad  from 'react-lazyload'
 
 import styles from './MainContent.module.scss'
 import Topic from './Topic'
@@ -20,6 +21,7 @@ function MainContent() {
         limit: 15
     })
     const wrapperRef = useRef()
+    const feedNavRef = useRef()
 
     useEffect(() => {
         const fetchData = async() => {
@@ -35,6 +37,7 @@ function MainContent() {
     }, [filters])
 
     const handlePageChange = useCallback((newPage) => {
+        feedNavRef.current.scrollIntoView()
         setFilters(prevState => {
             return {
                 ...prevState,
@@ -49,7 +52,7 @@ function MainContent() {
 
             <main className={clsx("grid wide pad-16", styles.mainContent)}>
                 <section className={styles.content}>
-                    <nav className={styles.contentNav}>
+                    <nav className={styles.contentNav} ref={feedNavRef}>
                         <Button 
                             className={clsx(styles.navBtn, {
                                 [styles.activeTab]: feedTab === 'hot'
@@ -70,17 +73,19 @@ function MainContent() {
                         </Button>
                         <hr/>
                     </nav>
+                    
                     {
                         Array.isArray(feed.data) && feed.data.map(post => {
                             return (
-                                <Hcard
-                                    key={post.id}
-                                    className={styles.feedPost}
-                                    data={post}
-                                    date
-                                    upvote
-                                    comment
-                                />
+                                <LazyLoad key={post.id} height={200} offset={-100}>
+                                    <Hcard
+                                        className={styles.feedPost}
+                                        data={post}
+                                        date
+                                        upvote
+                                        comment
+                                    />
+                                </LazyLoad>
                             )
                         })
                     }
@@ -136,12 +141,17 @@ function MainContent() {
                         </Button>
                     </Form>
 
-                    <Button
-                        className={styles.sidebarBanner}
-                        to="#"
-                    >
-                        <img src={images.home_sidebar_banner} alt="sidebar banner" loading="lazy"/>
-                    </Button>
+                    <LazyLoad height={200} offset={-100}>
+                        <Button
+                            className={styles.sidebarBanner}
+                            to="#"
+                        >
+                            <img
+                                src={images.home_sidebar_banner}
+                                alt="sidebar banner"
+                            />
+                        </Button>
+                    </LazyLoad>
                 </aside>
             </main>
         </div>

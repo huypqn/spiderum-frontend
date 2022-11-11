@@ -23,6 +23,13 @@ class FormValidator {
                     ? undefined
                     : `Vui lòng nhập tối thiểu ${min} ký tự`
             }
+        },
+        confirm_password: (field) => {
+            const input = this.form.querySelector(`input[name=${field}], input[id=${field}]`)
+            return (data) => {
+                return data === input.value ? undefined : `${field.name} đã nhập không trùng khớp`
+            }
+            
         }
     }
 
