@@ -1,5 +1,6 @@
 const pathName = {
     register: "dang-ky",
+    accountCreate: "tao-tai-khoan",
     login: "dang-nhap",
     about: "about",
     topic: "danh-muc",
@@ -10,6 +11,7 @@ const pathName = {
 const routesPath = {
     home: '/',
     register: pathName.register,
+    accountCreate: pathName.accountCreate,
     login: pathName.login,
     about: pathName.about,
     topic: `${pathName.topic}/:topicName`,

@@ -4,16 +4,14 @@
 .wrapper {
     display: flex;
     flex-direction: column;
-    flex: 1;
+    height: 100%;
 }
 
 .detail {
-    flex: 1;
     .detailHeader {
         margin-top: 0.8rem;
     }
 }
-
 
 @include MediaQuery.mobile {
 

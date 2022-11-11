@@ -2,7 +2,7 @@ import { Navigate, Outlet } from 'react-router-dom'
 import { routesPath } from '~/config';
 import { MainLayout } from '~/layouts'
 import { ProfileSetting } from '~/pages/private';
-import { Home, Login, Register, About, Post, Profile, Error404, Topic } from '~/pages/public'
+import { Home, Login, Register, About, Post, Profile, Error404, Topic, AccountCreate } from '~/pages/public'
 
 
 // Public routes
@@ -63,6 +63,10 @@ const routing = (auth) => [
                 ]
             },
         ],
+    },
+    {
+        path: routesPath.accountCreate,
+        element: <AccountCreate />
     },
     {
         path: routesPath.error404,

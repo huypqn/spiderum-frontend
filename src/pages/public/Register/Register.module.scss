@@ -1,0 +1,85 @@
+@use '../../../components/GlobalStyles/MediaQuery.scss';
+
+.notify {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem 0;
+    font-size: 1.4rem;
+    color: var(--brand-blue);
+    background-color: #f2fae3;
+    border: 1px solid var(--blue-light);
+
+    &.success {
+        color: #659f13;
+        border-color: rgba(101,159,19,.3);
+    }
+
+    &.failure {
+        color: #f33a58;
+        border-color: rgba(243, 58, 88, .3);
+    }
+
+    .notifyContent {
+        padding-left: 1.2rem;
+    }
+
+    .close {
+        height: 100%;
+        width: 3rem;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 700;
+        display: inline-block;
+        cursor: pointer;
+    }
+}
+
+.show {
+    display: flex;
+}
+
+// register 
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40rem;
+    color: #666;
+    font-size: 1.4rem;
+
+    .brandLogo {
+        text-align: center;
+    }
+
+    .field input {
+        width: 100%;
+    }
+
+    .submit {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .submitBtn {
+            margin-left: 2.4rem;
+            width: 10rem;
+        }
+    }
+
+    .bottom {
+        margin-top: 1.6rem;
+
+        .loginBtn {
+            color: var(--blue-dark);
+        }
+    }
+}
+
+@include MediaQuery.mobile {
+    .wrapper {
+        width: 72%;
+    }
+}

@@ -17,6 +17,7 @@ const icons = {
     view: require('~/assets/icons/view.svg').default,
     arrow: require('~/assets/icons/arrow.svg').default,
     scroll: require('~/assets/icons/scroll.svg').default,
+    spider: require('~/assets/icons/spider-logo.png'),
     error: require('~/assets/icons/error404.png')
 }
 

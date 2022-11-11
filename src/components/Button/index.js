@@ -2,12 +2,12 @@ import clsx from "clsx";
 import { Link } from 'react-router-dom'
 import styles from './Button.module.scss'
 
-function Button({ type, size, border, disabled, to, href, className,
+function Button({ category, size, border, disabled, to, href, className,
                 children, ...otherProps }) {
 
     const classes = clsx(styles.wrapper, {
         [className]: className,
-        [styles[type]]: type,
+        [styles[category]]: category,
         [styles[size]]: size,
         [styles[border]]: border,
         [styles.disabled]: disabled,

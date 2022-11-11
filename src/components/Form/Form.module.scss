@@ -1,35 +1,4 @@
 
-// contact sidebar
-#formContainer {
-    display: flex;
-    flex-direction: column;
-    margin: 2rem 0;
-    padding: 3.2rem 2rem 1.6rem;
-
-    .title {
-        font-size: 2.4rem;
-        font-weight: 700;
-        text-transform: uppercase;
-    }
-
-    .desc {
-        padding: {
-            top: 2.4rem;
-            bottom: 1.2rem;
-        }
-        color: #666;
-        font-size: 1.4rem;
-    }
-
-    .submitBtn {
-        margin-top: 1.6rem;
-        padding: 0.8rem 2.4rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        border-radius: 1.5rem;
-    }
-}
-
 .formGroup {
 
     margin-bottom: 2rem;
@@ -41,13 +10,11 @@
     }
 
     .formInput {
-        width: 100%;
-        padding: 1rem 1.6rem;
+        padding: 0.8rem 1.6rem;
         font-size: 1.6rem;
         color: #333;
         background-color: #f5f8fa;
         border: 1px solid transparent;
-        border-radius: 1.5rem;
         border-color: #ccc;
 
         &:focus {
@@ -62,10 +29,6 @@
     }
 }
 
-.border {
-    border: 1px solid #ebeef5;
-}
-
 .asterisk {
     color: #f33a58;
 }
@@ -75,5 +38,3 @@
         border-color: #f33a58;
     }
 }
-
-

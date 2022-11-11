@@ -21,13 +21,13 @@ function Error404() {
 
     return (
         <div className={styles.wrapper}>
-            <img src={icons.error} alt="404 error"/><br/>
+            <img src={icons.error} alt="404 error" loading="lazy"/><br/>
             <div id={styles.error}>404</div>
             <p id={styles.notFound}>KHÔNG TÌM THẤY TRANG</p>
             <p id={styles.desc}>Trang đã bị xóa hoặc địa chỉ URL không đúng</p>
             <Button 
                 id={styles.backBtn}
-                    type="primary"
+                    category="primary"
                     border="rounded"
                     size="medium"
                     to={routesPath.home}

@@ -9,19 +9,19 @@ function Extra({ className, data, ...props}) {
         <div className={clsx("flex", styles.extra)}>
             { props.upvote && (
                 <Button>
-                    <img src={icons.upvote} alt=" upvote icon"/>
+                    <img src={icons.upvote} alt=" upvote icon" loading="lazy"/>
                     <span>{data.upvote}</span>
                 </Button>
             )}
             { props.comment && (
                 <Button>
-                    <img src={icons.comment} alt="comment icon" />
+                    <img src={icons.comment} alt="comment icon" loading="lazy"/>
                     <span>{data.comment}</span>
                 </Button>
             )}
             { props.view && (
                 <Button>
-                    <img src={icons.view} alt="view icon" />
+                    <img src={icons.view} alt="view icon" loading="lazy"/>
                     <span>{data.view}</span>
                 </Button>
             )}

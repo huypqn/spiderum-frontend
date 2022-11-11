@@ -21,7 +21,7 @@ function Hcard({ className, data, ...otherProps }) {
                     className={clsx(styles.thumbLink)}
                     to={`${pathName.post}/${vnEncodeUrl(data.title)}`}
                 >
-                    <img src={data.thumbnail} alt="post's thumbnail" />
+                    <img src={data.thumbnail} alt="post's thumbnail" loading="lazy"/>
                 </Button>
             </div>
 
@@ -41,7 +41,7 @@ function Hcard({ className, data, ...otherProps }) {
                         {data.time_to_read}
                         </div>
                     <Button className={clsx(styles.headerRight)}>
-                        <img src={icons.bookmark} alt="bookmark icon" />
+                        {<img src={icons.bookmark} alt="bookmark icon" loading="lazy"/>}
                     </Button>
                 </header>
                 {/* detail content include: title, description */}
@@ -71,6 +71,7 @@ function Hcard({ className, data, ...otherProps }) {
                                 })}
                                 src={data.avatar}
                                 alt="author avatar"
+                                loading="lazy"
                             />
                         </Button>
                         {/* author name */}
@@ -87,7 +88,7 @@ function Hcard({ className, data, ...otherProps }) {
                     </div>
 
                     {/* extra info include: upvote, comment, view */}
-                    <Extra data={data} {...otherProps}></Extra>
+                    {<Extra data={data} {...otherProps}></Extra>}
 
                 </footer>
             </div>

@@ -1,18 +1,16 @@
-import { useState, useEffect, useCallback, memo } from 'react'
+import { useState, useEffect, useCallback, useRef, memo } from 'react'
 import clsx from "clsx"
-import LazyLoad from 'react-lazyload'
 
 import styles from './MainContent.module.scss'
 import Topic from './Topic'
 import Button from '~/components/Button'
-import Form from '~/components/Form'
-import Loading from '~/components/Loading'
+import { Form, FormGroup } from '~/components/Form'
 import { Hcard } from '~/components/Card'
 import Pagination from '~/components/Pagination'
 import { dataService } from '~/services'
 import { images } from '~/assets'
 
-function MainContent({ sort }) {
+function MainContent() {
 
     const [feed, setFeed] = useState({})
     const [feedTab, setFeedTab] = useState("hot")
@@ -21,6 +19,7 @@ function MainContent({ sort }) {
         page: 1,
         limit: 15
     })
+    const wrapperRef = useRef()
 
     useEffect(() => {
         const fetchData = async() => {
@@ -45,7 +44,7 @@ function MainContent({ sort }) {
     }, [])
 
     return (
-        <div className={styles.wrapper}>
+        <div className={styles.wrapper} ref={wrapperRef}>
             <Topic className="topicMobile" mobile/>
 
             <main className={clsx("grid wide pad-16", styles.mainContent)}>
@@ -55,7 +54,7 @@ function MainContent({ sort }) {
                             className={clsx(styles.navBtn, {
                                 [styles.activeTab]: feedTab === 'hot'
                             })}
-                            type="text"
+                            category="textStyle"
                             onClick={() => setFeedTab('hot')}
                         >
                             DÀNH CHO BẠN
@@ -64,7 +63,7 @@ function MainContent({ sort }) {
                             className={clsx(styles.navBtn, {
                                 [styles.activeTab]: feedTab === 'top'
                             })}
-                            type="text"
+                            category="textStyle"
                             onClick={() => setFeedTab('top')}
                         >
                             ĐÁNH GIÁ CAO NHẤT
@@ -74,16 +73,14 @@ function MainContent({ sort }) {
                     {
                         Array.isArray(feed.data) && feed.data.map(post => {
                             return (
-                                <LazyLoad key={post.id} placeholder={<Loading />}>
-                                    <Hcard
-                                        
-                                        className={styles.feedPost}
-                                        data={post}
-                                        date
-                                        upvote
-                                        comment
-                                    />
-                                </LazyLoad>
+                                <Hcard
+                                    key={post.id}
+                                    className={styles.feedPost}
+                                    data={post}
+                                    date
+                                    upvote
+                                    comment
+                                />
                             )
                         })
                     }
@@ -97,46 +94,54 @@ function MainContent({ sort }) {
                 </section>
                 <aside className={clsx(styles.sideBar)}>
                     <Topic className="topicSideBar" />
-                    <div className={clsx(styles.sidebarForm)}>
-                        <Form
-                            title={<>NHỮNG BÀI VIẾT <span style={{color: '#3d85c6'}}>NỔI BẬT</span> BẠN KHÔNG NÊN BỎ LỠ!</>}
-                            desc="Thứ Năm hàng tuần, bạn sẽ nhận được email từ Spiderum tổng hợp những bài viết đáng đọc nhất tuần qua."
-                            border
-                            fields={[
-                                {
-                                    "id": "email",
-                                    "label": "Email của bạn là:",
-                                    "type": "email",
-                                    "placeholder": "linh.phuong@gmail.com"
-                                },
-                                {
-                                    "id": "name",
-                                    "label": "Chúng mình có thể gọi bạn là:",
-                                    "type": "text",
-                                    "placeholder": "Nguyễn Phương Linh"
-                                }
-                            ]}
-                            button={{
-                                "text": "Đăng ký!",
-                                "type": "primary",
-                                "border": "rounded",
-                                "size": "medium"
-                            }}
-                            rules={{
-                                "#email": ["require", "email"],
-                                "#name": ["require"]
-                            }}
-                        >
-                        </Form>
-                    </div>
-                    <LazyLoad placeholder={<Loading />}>
+                    <Form
+                        className={styles.sidebarForm}
+                        rules={{
+                            "#email": ["require", "email"],
+                            "#name": ["require"]
+                        }}
+                    >
+                        <strong className={styles.formTitle}>
+                            <p>
+                                NHỮNG BÀI VIẾT&nbsp;
+                                <span className={styles.titleHighlight}>
+                                    NỔI BẬT
+                                </span><br/>
+                                <span>BẠN KHÔNG NÊN BỎ LỠ!</span>
+                            </p>
+                        </strong>
+                        <p className={styles.formDesc}>
+                            Thứ Năm hàng tuần, bạn sẽ nhận được email từ Spiderum tổng hợp những bài viết đáng đọc nhất tuần qua.
+                        </p>
+                        <FormGroup
+                            className={styles.group}
+                            id="email"
+                            label="Email của bạn là: "
+                            placeholder="linh.phuong@gmail.com"
+                        />
+                        <FormGroup
+                            className={styles.group}
+                            id="name"
+                            label="Chúng mình có thể gọi bạn là: "
+                            placeholder="Nguyễn Phương Linh"
+                        />
                         <Button
-                            className={styles.sidebarBanner}
-                            to="#"
+                            className={styles.submitBtn}
+                            type="submit"
+                            category="primary"
+                            size="medium"
+                            border="semiSquares"
                         >
-                                <img src={images.home_sidebar_banner} alt="sidebar banner"/>
+                            <span>Đăng ký!</span>
                         </Button>
-                    </LazyLoad>
+                    </Form>
+
+                    <Button
+                        className={styles.sidebarBanner}
+                        to="#"
+                    >
+                        <img src={images.home_sidebar_banner} alt="sidebar banner" loading="lazy"/>
+                    </Button>
                 </aside>
             </main>
         </div>

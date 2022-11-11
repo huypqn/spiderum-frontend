@@ -37,7 +37,7 @@ function ScrollToTop() {
             className={styles.scrollBtn}
             onClick={goToTop}
         >
-            <img src={icons.scroll} alt="scroll button"/>
+            <img src={icons.scroll} alt="scroll button" loading="lazy"/>
         </button>
     )
 }

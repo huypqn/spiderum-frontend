@@ -33,6 +33,40 @@
     border-bottom: 3px solid var(--brand-blue);
 }
 
+.sidebarForm {
+    margin: 2rem 0;
+    padding: 3.2rem 2rem 1.6rem;
+    border: 1px solid #ebeef5;
+
+    .formTitle {
+        font-size: 2.4rem;
+        color: #161616;
+
+        .titleHighlight {
+            color: var(--brand-blue);
+        }
+    }
+
+    .formDesc {
+        font-size: 1.4rem;
+        word-break: break-word;
+        color: #666;
+        line-height: 1.3;
+        margin: 2.4rem 0 1.6rem;
+    }
+
+    input {
+        width: 100%;
+        border-radius: 1.5rem;
+    }
+
+    .submitBtn {
+        width: 100%;
+        margin-top: 0.8rem;
+        text-transform: uppercase;
+    }
+}
+
 // sidebar banner
 .sidebarBanner {
     position: sticky;

@@ -13,6 +13,7 @@ function Footer() {
                         className='md-12 sm-12'
                         src={icons.wideLogo}
                         alt="Spiderum logo"
+                        loading="lazy"
                     />
                     <a href="https://aboutus.spiderum.com/dieu-khoan" className='md-12 sm-12'>
                         ĐIỀU KIỆN SỬ DỤNG
@@ -29,6 +30,7 @@ function Footer() {
                             alt="dmca protected icon"
                             width={72}
                             height={24}
+                            loading="lazy"
                         />
                     </section>
                     <section className={clsx(styles.bottomRight, "col")}>

@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react'
-import LazyLoad from 'react-lazyload'
 import clsx from 'clsx'
 
 import styles from './Home.module.scss'
 import Banner from './Banner'
 import { Hcard, Vcard } from '~/components/Card'
 import Button from '~/components/Button'
-import Loading from '~/components/Loading'
 import { dataService } from '~/services'
 import { icons, images } from '~/assets'
 import MainContent from './MainContent'
@@ -43,21 +41,17 @@ function Home() {
                 {
                     Array.isArray(popular) && popular.map((post, index) => {
                         return (
-                            <LazyLoad key={index} placeholder={<Loading/>}>
-                                <Hcard data={post} trending view/>
-                            </LazyLoad>
+                            <Hcard key={index} data={post} trending view/>
                         )
                     })  
                 }
                 </div>
-                <LazyLoad placeholder={<Loading />}>
-                    <Button
-                        className={clsx(styles.popularBanner)}
-                        href="https://b.link/SP-Web-Combo-Seneca"
-                    >
-                        <img src={images.home_popular_banner} alt="combo seneca banner" />
-                    </Button>
-                </LazyLoad>
+                <Button
+                    className={clsx(styles.popularBanner)}
+                    href="https://b.link/SP-Web-Combo-Seneca"
+                >
+                    <img src={images.home_popular_banner} alt="combo seneca banner" loading="lazy"/>
+                </Button>
             </section>
 
             <section className={clsx(styles.trendingSection)}>
@@ -73,18 +67,14 @@ function Home() {
                         {
                             Array.isArray(trending) && trending.map((post, index) => {
                                 return (
-                                    <LazyLoad key={index} placeholder={<Loading/>}>
-                                        <div className='flex'>
-                                            <Vcard data={post} date/>
-                                        </div>
-                                    </LazyLoad>
+                                    <Vcard key={index} data={post} date/>
                                 )
                             })
                         }
                     </div>
                     <Button className={clsx(styles.top10Bottom)}>
                         <span>
-                            Xem TOP 10 bài viết <img src={icons.arrow} alt="arrow icon"/>
+                            Xem TOP 10 bài viết <img src={icons.arrow} alt="arrow icon" loading='lazy'/>
                         </span>
                     </Button>
                 </div>

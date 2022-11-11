@@ -67,6 +67,7 @@ function Header() {
                                 alt="Spiderum logo"
                                 width={110}
                                 height={25}
+                            
                             />
                         </picture>
                     </Button>
@@ -77,7 +78,7 @@ function Header() {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <img src={icons.facebook} alt="facebook icon" />
+                            <img src={icons.facebook} alt="facebook icon"/>
                         </Button>
                         <Button
                             className={clsx(styles.socialIcon)}
@@ -85,7 +86,7 @@ function Header() {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <img src={icons.youtube} alt="youtube icon" />
+                            <img src={icons.youtube} alt="youtube icon"/>
                         </Button>
                         <Button
                             className={clsx(styles.socialIcon)}
@@ -93,7 +94,7 @@ function Header() {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <img src={icons.spotify} alt="spotify icon" />
+                            <img src={icons.spotify} alt="spotify icon"/>
                         </Button>
                         <Button
                             className={clsx(styles.navShop, styles.socialIcon, "md-0 sm-0")}
@@ -103,7 +104,7 @@ function Header() {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <img src={icons.shop} alt="cart icon" />
+                            <img src={icons.shop} alt="cart icon"/>
                             <p>Spider's Shop</p>
                         </Button>
                     </div>
@@ -111,16 +112,16 @@ function Header() {
                 
                 <div className={clsx(styles.rightNav)}>
                     <Button className={clsx(styles.searchBtn)} onClick={openSearchBox}>
-                        <img src={icons.search} alt="search icon" />
+                        <img src={icons.search} alt="search icon"/>
                     </Button>
 
-                    <Button className="sm-0" type="textStyle" to={routesPath.about}>
+                    <Button className="sm-0" category="textStyle" to={routesPath.about}>
                         Về Spiderum
                     </Button>
-                    <Button className="sm-0" type="textStyle" to={routesPath.register}>
+                    <Button className="sm-0" category="textStyle" to={routesPath.register}>
                         Đăng ký
                     </Button>
-                    <Button type="primary" size="large" border="rounded" to={routesPath.login}>
+                    <Button category="primary" size="large" border="rounded" to={routesPath.login}>
                         Đăng nhập
                     </Button>
                 </div>
@@ -136,7 +137,7 @@ function Header() {
                     className={clsx(styles.searchBox)}
                     type="text" placeholder='Tìm kiếm theo tiêu đề, tác giả hoặc tag'
                 />
-                <img src={icons.search} alt="search icon" />
+                <img src={icons.search} alt="search icon" loading="lazy"/>
             </div>
         </header>
     )

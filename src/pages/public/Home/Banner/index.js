@@ -17,7 +17,7 @@ function Banner() {
                     </div>
                     <Button
                         className={clsx(styles.bannerButton)}
-                        type="outline" size="large" border="rounded"
+                        category="outline" size="large" border="rounded"
                     >
                         Đăng bài viết
                     </Button>

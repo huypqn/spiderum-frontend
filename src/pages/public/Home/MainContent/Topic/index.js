@@ -43,7 +43,7 @@ function Topic({ className, mobile }) {
                         return (
                             <Button
                                 key={topic.id}
-                                type="outline"
+                                category="outline"
                                 border="rounded"
                                 size="medium"
                                 to={`${pathName.topic}/${vnEncodeUrl(topic.name)}`}
@@ -58,7 +58,7 @@ function Topic({ className, mobile }) {
                 mobile && (
                     <Button 
                         className={clsx(styles.topicMobileShow)}
-                        type="primary"
+                        category="primary"
                         border="rounded"
                         size="medium"
                         onClick={handleTopicMobileShow}

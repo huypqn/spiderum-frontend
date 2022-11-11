@@ -1,6 +1,7 @@
 export { default as Home } from './Home'
 export { default as Login } from './Login'
 export { default as Register } from './Register'
+export { default as AccountCreate } from './AccountCreate'
 export { default as About } from './About'
 export { default as Topic } from './Topic'
 export { default as Post } from './Post'
