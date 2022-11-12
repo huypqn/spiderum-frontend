@@ -9,4 +9,9 @@ async function get(path, options = {}) {
     return response.data
 }
 
-export { request, get }
+async function post(path, options = {}, config = {}) {
+    const response = await request.post(path, options, config)
+    return response.data
+}
+
+export { request, get, post }

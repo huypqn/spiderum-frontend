@@ -1,23 +1,60 @@
-import clsx from "clsx"
 import { useCallback, useRef, useState } from "react"
+import { useNavigate } from "react-router-dom"
+import clsx from "clsx"
 import styles from './AccountCreate.module.scss'
 import { Form, FormGroup } from "~/components/Form"
 import Button from "~/components/Button"
+import { dataService } from "~/services"
+import { routesPath } from "~/config"
 import { icons } from "~/assets"
 
 function AccountCreate() {
 
     const [show, setShow] = useState(false)
+    const navigate = useNavigate()
 
     const notifyRef = useRef()
     const messageRef = useRef()
 
     const handleFormData = useCallback((data) => {
-        // do something
+        const token = window.location.search
+        const params = new URLSearchParams(token)
+        const payload = {
+            username: data.username,
+            name: data.name.trim(),
+            password: data.password,
+            identity_number: data.identity.trim(),
+            phone_number: data.phone_number.trim(),
+            token: params.get('token')
+        }
+
+        const createAccount = async () => {
+            const res = await dataService.register(payload)
+            if (res.code === 200) {
+                notifyRef.current.classList.remove(styles.failure)
+                notifyRef.current.classList.add(styles.success)
+            }
+            else {
+                notifyRef.current.classList.remove(styles.success)
+                notifyRef.current.classList.add(styles.failure)
+            }
+            console.log(res);
+            messageRef.current.innerHTML = res.message
+            notifyRef.current.classList.add(styles.show)
+
+            if (res.code === 200) {
+                setTimeout(() => {
+                    navigate(routesPath.home)
+                }, 3000)
+            }
+        }
+
+        createAccount()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const hideNotify = () => {
-        notifyRef.current.classList.remove(styles.success, styles.failure, styles.show)
+        notifyRef.current.classList.remove(styles.show)
     }
 
     return (
@@ -32,26 +69,36 @@ function AccountCreate() {
                 </div>
                 <Form
                     className={styles.registerForm}
+                    rules={{
+                        "#username": ["require", "min:6", "username"],
+                        "#password": ["require", "min:3"],
+                        "#confirm_password": ["require", "min:3", "confirm:password"]
+                    }}
                     handleData={handleFormData}
                 >
                     <FormGroup
                         className={clsx(styles.group, styles.mgbt)}
                         id="username"
+                        type="text"
                         placeholder="Tên đăng nhập"
+                        autoFocus
                     />
                     <FormGroup
                         className={clsx(styles.group, styles.mgbt)}
                         id="name"
+                        type="text"
                         placeholder="Tên hiển thị"
                     />
                     <FormGroup
                         className={clsx(styles.group, styles.mgbt)}
                         id="password"
+                        type="password"
                         placeholder="Mật khẩu"
                     />
                     <FormGroup
                         className={clsx(styles.group, styles.mgbt)}
-                        id="verify_password"
+                        id="confirm_password"
+                        type="password"
                         placeholder="Nhập lại mật khẩu"
                     />
                     <Button
@@ -87,7 +134,7 @@ function AccountCreate() {
                         </Button> của&nbsp;
                         <strong>Spiderum</strong>
                     </p>
-                    <Button category="primary" size="large" href="#">Đăng ký</Button>
+                    <Button type="submit" category="primary" size="large">Đăng ký</Button>
                 </Form>
                 <div className={styles.spacer}></div>
             </div>

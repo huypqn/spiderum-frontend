@@ -7,7 +7,8 @@ const getTopics = async (options) => {
         })
         return res
     } catch (error) {
-        console.log(error);
+        console.log(error.response);
+
     }
 }
 
@@ -18,8 +19,18 @@ const getPosts = async (options) => {
         })
         return res
     } catch (error) {
-        console.log(error)
+        console.log(error.response);
+
     }
 }
 
-export { getPosts, getTopics }
+const register = async (payload) => {
+    try {
+        const res = await httpRequest.post('/user/register', payload)
+        return res
+    } catch (error) {
+        console.log(error.response);
+    }
+}
+
+export { getPosts, getTopics, register }

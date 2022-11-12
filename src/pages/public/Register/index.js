@@ -73,7 +73,7 @@ function Register() {
                         Đã có tài khoản?
                         <Button
                             className={styles.loginBtn}
-                            type="textStyle"
+                            category="textStyle"
                             to={`/${routesPath.login}`}
                         >
                             &nbsp;Đăng Nhập

@@ -5,7 +5,13 @@ function App() {
 
     let element = useRoutes(routing(false))
 
-     return (
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+    if (!isSafari) {
+        document.documentElement.style.scrollBehavior = "smooth"
+    }
+
+    return (
         <div className='App'>
             {element}
         </div>

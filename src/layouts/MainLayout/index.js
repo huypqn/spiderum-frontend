@@ -4,7 +4,7 @@ import Footer from "~/components/Footer";
 function MainLayout({ children }) {
     return (
         <>
-            <Header />
+            <Header.LoggedIn />
             <div className="container">
                 {children}
             </div>

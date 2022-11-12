@@ -1,23 +1,24 @@
-
+@use '../../../components/GlobalStyles/MediaQuery.scss';
 .notify {
     display: none;
     align-items: center;
     justify-content: space-between;
+    padding: 1rem;
     width: 100%;
-    padding: 1rem 0;
     font-size: 1.4rem;
-    color: var(--brand-blue);
-    background-color: #f2fae3;
-    border: 1px solid var(--blue-light);
 
     &.success {
         color: #659f13;
-        border-color: rgba(101,159,19,.3);
+        background-color: rgba(101,159,19,.1);
     }
 
     &.failure {
         color: #f33a58;
-        border-color: rgba(243, 58, 88, .3);
+        background-color: rgba(243, 58, 88, .1);
+    }
+
+    &.show {
+        display: flex;
     }
 
     .notifyContent {
@@ -26,7 +27,7 @@
 
     .close {
         height: 100%;
-        width: 3rem;
+        width: 4rem;
         text-align: center;
         font-size: 2rem;
         font-weight: 700;
@@ -34,8 +35,6 @@
         cursor: pointer;
     }
 }
-
-
 
 .container {
     position: absolute;
@@ -71,8 +70,9 @@
     }
 
     .moreBtn {
-        color: #666;
-        background-color: #f7f7f7;
+        color: var(--white);
+        // background-color: #f7f7f7;
+        background-color: rgba($color: #D46F33, $alpha: .9);
     }
 
     .moreField {
@@ -103,8 +103,4 @@
 
 .spacer {
     height: 2rem;
-}
-
-.show {
-    display: flex;
 }

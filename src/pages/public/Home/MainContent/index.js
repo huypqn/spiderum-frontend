@@ -37,7 +37,7 @@ function MainContent() {
     }, [filters])
 
     const handlePageChange = useCallback((newPage) => {
-        feedNavRef.current.scrollIntoView()
+        feedNavRef.current.scrollIntoView(true)
         setFilters(prevState => {
             return {
                 ...prevState,

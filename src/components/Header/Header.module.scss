@@ -5,13 +5,16 @@
     top: 0;
     left: 0;
     right: 0;
-    align-items: center;
-    justify-content: center;
-    height: var(--navbar-height);
     background-color: #fff;
     box-shadow: 0 4px 20px rgba(0, 0, 0, .1);
     z-index: 9999;
     transition: top 0.5s ease-in-out;
+}
+
+.container {
+    align-items: center;
+    justify-content: center;
+    height: var(--navbar-height);
 }
 
 .navbar {
@@ -39,7 +42,7 @@
         }
     }
 }
-
+// social item
 .socialItem {
     position: relative;
     margin-left: 1.6rem;
@@ -81,11 +84,12 @@
     }
 }
 
+//right nav
 .rightNav {
     display: flex;
     align-items: center;
 
-    .searchBtn {
+    .iconBtn {
         opacity: 0.5;
         border: none;
         background-color: #fff;
@@ -99,8 +103,60 @@
     }
 
     a + a,
+    button + button,
     button + a {
         margin-left: 1.6rem;
+    }
+}
+
+.userAvatar {
+    position: relative;
+    width: 4rem;
+    height: 4rem;
+    img {
+        width: inherit;
+        height: inherit;
+        object-fit: cover;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        right: -1.5rem;
+        width: 0;
+        height: 0;
+        border: {
+            left: 4px solid transparent;
+            right: 4px solid transparent;
+            top: 4px solid #606266;
+        }
+    }
+}
+
+// navbar bottom
+.navBottom {
+    height: var(--navbar-bottom-height);
+    nav, a, button {
+        height: 100%;
+    }
+
+    .subMenu {
+        padding: 0 1.2rem;
+        margin: 0 -1.2rem;
+    }
+}
+.categoriesMenu {
+    height: 100%;
+    a + a {
+        margin-left: 2rem;
+    }
+
+    .categoriesBtn{
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        &:hover {
+            color: rgba(45, 55, 72, .75);
+        }
     }
 }
 

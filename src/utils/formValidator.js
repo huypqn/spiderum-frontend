@@ -6,7 +6,7 @@ class FormValidator {
         this.css = data.css
     }
 
-    static validateTests = {
+    validateTests = {
         require: (data) => {
             return data ? undefined : "Vui lòng hoàn thành trường bắt buộc này"
         },
@@ -24,12 +24,25 @@ class FormValidator {
                     : `Vui lòng nhập tối thiểu ${min} ký tự`
             }
         },
-        confirm_password: (field) => {
-            const input = this.form.querySelector(`input[name=${field}], input[id=${field}]`)
+        max: (max) => {
             return (data) => {
-                return data === input.value ? undefined : `${field.name} đã nhập không trùng khớp`
+                if (isNaN(Number(max))) {
+                    throw Error(`validate rule không hợp lệ! max = ${max}`)
+                }
+                return data.length >= Number(max)
+                    ? undefined
+                    : `Vui lòng nhập tối đa ${max} ký tự`
             }
-            
+        },
+        confirm: (field) => {
+            const input = this.form.querySelector(`input[id=${field}]`)
+            return (data) => {
+                return data === input.value ? undefined : `${input.name} đã nhập không trùng khớp`
+            }
+        },
+        username: (data) => {
+            const regex = /^[a-zA-Z0-9_]+$/
+            return regex.test(data) ? undefined : "Tên tài khoản chỉ được bao gồm A-Z, a-z, 0-9 hoặc _"
         }
     }
 
@@ -40,10 +53,10 @@ class FormValidator {
                 if (typeof rule === 'string' && rule.includes(':')) {
                     const ruleData = rule.split(':')
                     rule = ruleData[0]
-                    test = FormValidator.validateTests[rule](ruleData[1])
+                    test = this.validateTests[rule](ruleData[1])
                 }
                 else {
-                    test = FormValidator.validateTests[rule]
+                    test = this.validateTests[rule]
                 }
                 return test
             })
@@ -92,7 +105,9 @@ class FormValidator {
         for (const field of fields) {
             const formGroup = field.parentElement
             const selector = `#${field.id}`
-            if (!this.handleValidate(field.value, selector, formGroup)) {
+            
+            if (this.rules[selector] &&
+                !this.handleValidate(field.value, selector, formGroup)) {
                 isPassed = false
             }
             submitData[field.id] = field.value
