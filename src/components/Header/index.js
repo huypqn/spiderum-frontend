@@ -67,8 +67,8 @@ function Header() {
                         Đăng nhập
                     </Button>
                 </div>
+                <SearchModal open={openSearch} close={closeSearchBox}/>
             </nav>
-            <SearchModal open={openSearch} close={closeSearchBox}/>
         </header>
     )
 }
@@ -78,6 +78,8 @@ function LoggedIn() {
     const [openSearch, setOpenSearch] = useState(false)
     const [topic, setTopic] = useState([])
     const wrapperRef = useRef()
+    const subMenuRef = useRef()
+    const userSettingRef = useRef()
 
     let prevScrollPosition = window.scrollY
     const handleHeaderShow = () => {
@@ -101,7 +103,7 @@ function LoggedIn() {
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [wrapperRef])
-    console.log(topic);
+
     useEffect(() => {
         const getTopic = async () => {
             try {
@@ -121,6 +123,32 @@ function LoggedIn() {
     const closeSearchBox = () => {
         setOpenSearch(false)
     }
+
+    const handleSubMenuOpenClose = (e) => {
+        const subMenuBtn = document.querySelector(`.${styles.subMenuBtn}`)
+        const userAvatar = document.querySelector(`.${styles.userAvatar}`)
+        if (subMenuBtn && (e.target === subMenuBtn || subMenuBtn.contains(e.target))) {
+            subMenuRef.current.classList.toggle(styles.show)
+        }
+        else {
+            subMenuRef.current.classList.remove(styles.show)
+        }
+
+        if (userAvatar && (e.target === userAvatar || userAvatar.contains(e.target))) {
+            userSettingRef.current.classList.toggle(styles.show)
+        }
+        else {
+            userSettingRef.current.classList.remove(styles.show)
+        }
+    } 
+
+    useEffect(() => {
+        document.addEventListener('click', handleSubMenuOpenClose)
+
+        return () => {
+            document.removeEventListener('click', handleSubMenuOpenClose)
+        }
+    }, [])
 
     return (
         <div className={clsx(styles.wrapper)} ref={wrapperRef}>
@@ -151,10 +179,83 @@ function LoggedIn() {
                             border="rounded"
                         >
                             <img src={icons.avt} alt="avatar"/>
+                            <div
+                                className={clsx(styles.userSetting, styles.subCategoriesMenu)}
+                                ref={userSettingRef}
+                            >
+                                <header className={clsx(styles.userInfoContainer, "flex")}>
+                                    <div className={styles.userInfo}>
+                                        <img src={icons.avt} alt="user avatar"/>
+                                        <div className={clsx(styles.userName)}>
+                                            <p>Astral</p>
+                                            <p>@shuu</p>
+                                        </div>
+                                    </div>
+                                    <Button
+                                        className={styles.userProfileBtn}
+                                        category="outline"
+                                        size="large"
+                                        border="rounded"
+                                        to="#"
+                                    >
+                                        Xem trang cá nhân
+                                    </Button>
+                                </header>
+                                <hr />
+                                <main>
+                                    <Button
+                                        className={clsx(styles.subCategoriesBtn)}
+                                        category="textStyle"
+                                        size="large"
+                                        to="#"
+                                    >
+                                        <img src={icons.mypost} alt="my post icon"/>&nbsp;
+                                        Bài viết của tôi
+                                    </Button>
+                                    <Button
+                                        className={clsx(styles.subCategoriesBtn)}
+                                        category="textStyle"
+                                        size="large"
+                                        to="#"
+                                    >
+                                        <img src={icons.draft} alt="my post icon"/>&nbsp;
+                                        Nháp của tôi
+                                    </Button>
+                                    <Button
+                                        className={clsx(styles.subCategoriesBtn)}
+                                        category="textStyle"
+                                        size="large"
+                                        to="#"
+                                    >
+                                        <img src={icons.saved} alt="my post icon"/>&nbsp;
+                                        Đã lưu
+                                    </Button>
+                                    <Button
+                                        className={clsx(styles.subCategoriesBtn)}
+                                        category="textStyle"
+                                        size="large"
+                                        to="#"
+                                    >
+                                        <img src={icons.setting} alt="my post icon"/>&nbsp;
+                                        Tùy chỉnh tài khoản
+                                    </Button>
+                                    <hr />
+                                    <Button
+                                        className={clsx(styles.subCategoriesBtn)}
+                                        category="textStyle"
+                                        size="large"
+                                        to="#"
+                                    >
+                                        <img src={icons.logout} alt="my post icon"/>&nbsp;
+                                        Đăng xuất
+                                    </Button>
+                                </main>
+                                <footer className={styles.logout}></footer>
+                            </div>
                         </Button>
                     </div>
+                    <SearchModal open={openSearch} close={closeSearchBox}/>
                 </nav>
-                <SearchModal open={openSearch} close={closeSearchBox}/>
             </header>
 
             <header className={clsx(styles.navBottom, "flex")}>
@@ -167,7 +268,6 @@ function LoggedIn() {
                                         className={styles.categoriesBtn}
                                         key={index}
                                         category="textStyle"
-                                        size="large"
                                         to="#"
                                     >
                                         {cat.name}
@@ -176,8 +276,25 @@ function LoggedIn() {
                             })
                         }
                     </div>
-                    <Button className={styles.subMenu}>
+                    <Button className={styles.subMenuBtn}>
                         <img src={icons.menu} alt="menu icon"/>
+                        <div className={styles.subCategoriesMenu} ref={subMenuRef}>
+                            {
+                                topic.slice(6,).map((cat, index) => {
+                                    return (
+                                        <Button
+                                            className={styles.subCategoriesBtn}
+                                            key={index}
+                                            category="textStyle"
+                                            size="large"
+                                            to="/register"
+                                        >
+                                            {cat.name}
+                                        </Button>
+                                    )
+                                })
+                            }
+                        </div>
                     </Button>
                 </nav>
             </header>

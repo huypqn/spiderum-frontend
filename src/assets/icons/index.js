@@ -21,6 +21,11 @@ const icons = {
     notify: require('~/assets/icons/notify.svg').default,
     pen: require('~/assets/icons/pen.svg').default,
     menu: require('~/assets/icons/menu.svg').default,
+    mypost: require('~/assets/icons/mypost.svg').default,
+    draft: require('~/assets/icons/draft.svg').default,
+    saved: require('~/assets/icons/saved.svg').default,
+    setting: require('~/assets/icons/setting.svg').default,
+    logout: require('~/assets/icons/logout.svg').default,
     avt: require('~/assets/icons/avt.png'),
     spider: require('~/assets/icons/spider-logo.png'),
     error: require('~/assets/icons/error404.png')

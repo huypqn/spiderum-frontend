@@ -1,15 +1,15 @@
-import { useCallback, useEffect, useRef } from "react"
 import clsx from "clsx"
 import Button from "../Button"
 import styles from './Header.module.scss'
 import { icons } from "~/assets"
 
 
-function SearchModal({ open, close }) {
+function SearchModal({ className, open, close }) {
 
     return (
         <div className={clsx(styles.navbar, styles.modal, "grid wide", {
-            [styles.open]: open
+            [styles.open]: open,
+            [className]: className
         })}>
             <Button
                 className={clsx(styles.cancelSearch)}
