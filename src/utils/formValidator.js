@@ -105,8 +105,7 @@ class FormValidator {
         for (const field of fields) {
             const formGroup = field.parentElement
             const selector = `#${field.id}`
-            
-            if (this.rules[selector] &&
+            if (this.rules &&
                 !this.handleValidate(field.value, selector, formGroup)) {
                 isPassed = false
             }

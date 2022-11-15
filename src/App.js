@@ -1,9 +1,12 @@
 import { useRoutes } from 'react-router-dom'
+import { useSelector } from 'react-redux';
 import { routing } from '~/routes'
 
 function App() {
 
-    let element = useRoutes(routing(false))
+    const auth = useSelector(state => state.user.isLoggedIn)
+
+    let element = useRoutes(routing(auth))
 
     var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 

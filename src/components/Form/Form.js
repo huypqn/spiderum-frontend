@@ -17,11 +17,13 @@ function Form({ className, rules, handleData, children }) {
             css: styles.invalid
         })
 
-        validator.validate()
+        if (rules) {
+            validator.validate()
+        }
 
         formRef.current.onsubmit = (e) => {
             e.preventDefault()
-
+            
             const { isPassed, submitData } = validator.validateAll()
 
             if (isPassed) {

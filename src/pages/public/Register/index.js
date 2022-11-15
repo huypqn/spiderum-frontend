@@ -72,11 +72,12 @@ function Register() {
                     <p className={styles.bottom}>
                         Đã có tài khoản?
                         <Button
+                            type="button"
                             className={styles.loginBtn}
                             category="textStyle"
                             to={`/${routesPath.login}`}
                         >
-                            &nbsp;Đăng Nhập
+                            &nbsp;Đăng nhập
                         </Button>
                     </p>
                 </Form>

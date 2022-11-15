@@ -38,7 +38,7 @@ function AccountCreate() {
                 notifyRef.current.classList.remove(styles.success)
                 notifyRef.current.classList.add(styles.failure)
             }
-            console.log(res);
+
             messageRef.current.innerHTML = res.message
             notifyRef.current.classList.add(styles.show)
 

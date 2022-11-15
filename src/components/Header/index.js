@@ -160,7 +160,7 @@ function LoggedIn() {
                         <Button className={clsx(styles.iconBtn)} onClick={openSearchBox}>
                             <img src={icons.search} alt="search icon"/>
                         </Button>
-                        <Button className={clsx(styles.iconBtn)}>
+                        <Button className={clsx(styles.iconBtn, styles.messageBtn)}>
                             <img src={icons.message} alt="message icon"/>
                         </Button>
                         <Button className={clsx(styles.iconBtn)}>
@@ -170,7 +170,7 @@ function LoggedIn() {
                             className={clsx(styles.writePostBtn)}
                             category="outline" size="large" border="rounded"
                         >
-                            <img src={icons.pen} alt="pen icon"/>&nbsp;
+                            <img src={icons.pen} alt="pen icon"/>
                             Viết bài
                         </Button>
                         <Button

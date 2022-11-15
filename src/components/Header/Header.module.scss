@@ -110,6 +110,12 @@
     }
 }
 
+.writePostBtn {
+    img {
+        margin-right: 0.8rem;
+    }
+}
+
 .userAvatar {
     position: relative;
     width: 4rem;
@@ -309,5 +315,16 @@
 @include MediaQuery.mobile {
     .wrapper .navBottom {
         display: none;
+    }
+
+    .messageBtn {
+        display: none;
+    }
+
+    .writePostBtn {
+        text-align: center;
+        img {
+            display: none;
+        }
     }
 }
