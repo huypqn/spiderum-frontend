@@ -19,7 +19,7 @@ function Hcard({ className, data, ...otherProps }) {
             })}>
                 <Button
                     className={clsx(styles.thumbLink)}
-                    to={`${pathName.post}/${vnEncodeUrl(data.title)}`}
+                    to='#'
                 >
                     <img src={data.thumbnail} alt="post's thumbnail" loading="lazy"/>
                 </Button>
@@ -33,7 +33,7 @@ function Hcard({ className, data, ...otherProps }) {
                 <header className={clsx("flex", styles.detailHeader)}>
                     <div className={clsx(styles.headerLeft, styles.time)}>
                         <Button
-                            to={`${pathName.topic}/${vnEncodeUrl(data.topic)}`}
+                            to='#'
                             className={clsx(styles.topic, styles.time)}
                         >
                             {data.topic}
@@ -50,7 +50,7 @@ function Hcard({ className, data, ...otherProps }) {
                         className={clsx(styles.title, {
                             [styles["title-md"]]: otherProps.trending
                         })}
-                        to={`${pathName.post}/${vnEncodeUrl(data.title)}`}
+                        to='#'
                     >
                         <span>{data.title}</span>
                     </Button>

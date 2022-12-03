@@ -124,6 +124,7 @@
         width: inherit;
         height: inherit;
         object-fit: cover;
+        border-radius: 50%;
     }
 
     &::after {
@@ -139,11 +140,12 @@
         }
     }
 
-    .userSetting {
-        z-index: 999;
-        right: -1.6rem;
-    }
+}
 
+.userSetting {
+    z-index: 999;
+    right: -1.6rem;
+    
     a + a {
         margin-left: 0;
     }
@@ -154,7 +156,6 @@
     align-items: center;
     width: 28rem;
     
-
     .userProfileBtn {
         width: 68%;
         margin: 0.8rem 0;
@@ -175,6 +176,8 @@
     img {
         width: 6.4rem;
         height: 6.4rem;
+        border-radius: 50%;
+        object-fit: cover;
     }
 
     .userName {
@@ -192,11 +195,6 @@
     @include MediaQuery.mobile {
         grid-template-columns: 1fr 1fr;
     }
-}
-
-
-.userSetting.subCategoriesMenu {
-    top: 120%
 }
 
 // navbar bottom
@@ -243,6 +241,7 @@
 
     .subCategoriesBtn {
         display: block;
+        width: 100%;
         text-align: left;
         text-transform: capitalize;
         color: #161616;
@@ -318,7 +317,7 @@
         display: none;
     }
 
-    .messageBtn {
+    .iconBtn.messageBtn {
         display: none;
     }
 

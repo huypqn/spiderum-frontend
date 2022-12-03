@@ -46,7 +46,7 @@ function Topic({ className, mobile }) {
                                 category="outline"
                                 border="rounded"
                                 size="medium"
-                                to={`${pathName.topic}/${vnEncodeUrl(topic.name)}`}
+                                to='#'
                             >
                                 {topic.name}
                             </Button>

@@ -20,7 +20,7 @@ function MainContent() {
         page: 1,
         limit: 15
     })
-    const wrapperRef = useRef()
+
     const feedNavRef = useRef()
 
     useEffect(() => {
@@ -37,7 +37,10 @@ function MainContent() {
     }, [filters])
 
     const handlePageChange = useCallback((newPage) => {
-        feedNavRef.current.scrollIntoView(true)
+        feedNavRef.current.scrollIntoView({
+            block: 'nearest',
+            inline: 'start'
+        })
         setFilters(prevState => {
             return {
                 ...prevState,
@@ -47,7 +50,7 @@ function MainContent() {
     }, [])
 
     return (
-        <div className={styles.wrapper} ref={wrapperRef}>
+        <div className={styles.wrapper}>
             <Topic className="topicMobile" mobile/>
 
             <main className={clsx("grid wide pad-16", styles.mainContent)}>

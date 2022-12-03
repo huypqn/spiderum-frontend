@@ -3,7 +3,6 @@ import Button from '~/components/Button'
 import styles from './Vcard.module.scss'
 import { icons } from '~/assets'
 import { pathName } from '~/config'
-import { vnEncodeUrl } from '~/utils'
 
 function Vcard({ className, data, ...otherProps }) {
 
@@ -13,7 +12,7 @@ function Vcard({ className, data, ...otherProps }) {
         })}>
             {/* post thumbnail */}
             <div className={clsx(styles.thumbnail)}>
-                <Button to={`${pathName.post}/${vnEncodeUrl(data.title)}`}>
+                <Button to='#'>
                     <img src={data.thumbnail} alt="post's thumbnail" loading="lazy"/>
                 </Button>
             </div>
@@ -32,7 +31,7 @@ function Vcard({ className, data, ...otherProps }) {
                 <section className={clsx(styles.detailContent)}>
                     <Button
                         className={clsx(styles.title)}
-                        to={`${pathName.post}/${vnEncodeUrl(data.title)}`}
+                        to='#'
                     >
                         <div>{data.title}</div>
                     </Button>

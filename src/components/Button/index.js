@@ -15,7 +15,7 @@ function Button({ category, size, border, disabled, to, href, className,
     const _props = {
         ...otherProps
     }
-    
+   
     let Component = 'button';
     if (to) {
         Component = Link

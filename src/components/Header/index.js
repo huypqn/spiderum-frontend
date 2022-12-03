@@ -1,5 +1,7 @@
-import { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
+import { useState, useEffect, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setSignOut } from '~/store/actions';
 import styles from './Header.module.scss';
 import Button from '../Button';
 import LeftNav from './LeftNav';
@@ -76,6 +78,8 @@ function Header() {
 function LoggedIn() {
 
     const [openSearch, setOpenSearch] = useState(false)
+    const userInfo = useSelector(state => state.user.info)
+    const dispatch = useDispatch()
     const [topic, setTopic] = useState([])
     const wrapperRef = useRef()
     const subMenuRef = useRef()
@@ -140,7 +144,16 @@ function LoggedIn() {
         else {
             userSettingRef.current.classList.remove(styles.show)
         }
-    } 
+    }
+
+    const handleSignOut = () => {
+        console.log("handle Sign Out");
+        localStorage.removeItem('isLoggedIn')
+        localStorage.removeItem('user')
+        const action = setSignOut()
+        dispatch(action)
+    }
+
 
     useEffect(() => {
         document.addEventListener('click', handleSubMenuOpenClose)
@@ -178,81 +191,80 @@ function LoggedIn() {
                             category="outline"
                             border="rounded"
                         >
-                            <img src={icons.avt} alt="avatar"/>
-                            <div
-                                className={clsx(styles.userSetting, styles.subCategoriesMenu)}
-                                ref={userSettingRef}
-                            >
-                                <header className={clsx(styles.userInfoContainer, "flex")}>
-                                    <div className={styles.userInfo}>
-                                        <img src={icons.avt} alt="user avatar"/>
-                                        <div className={clsx(styles.userName)}>
-                                            <p>Astral</p>
-                                            <p>@shuu</p>
-                                        </div>
-                                    </div>
-                                    <Button
-                                        className={styles.userProfileBtn}
-                                        category="outline"
-                                        size="large"
-                                        border="rounded"
-                                        to="#"
-                                    >
-                                        Xem trang cá nhân
-                                    </Button>
-                                </header>
-                                <hr />
-                                <main>
-                                    <Button
-                                        className={clsx(styles.subCategoriesBtn)}
-                                        category="textStyle"
-                                        size="large"
-                                        to="#"
-                                    >
-                                        <img src={icons.mypost} alt="my post icon"/>&nbsp;
-                                        Bài viết của tôi
-                                    </Button>
-                                    <Button
-                                        className={clsx(styles.subCategoriesBtn)}
-                                        category="textStyle"
-                                        size="large"
-                                        to="#"
-                                    >
-                                        <img src={icons.draft} alt="my post icon"/>&nbsp;
-                                        Nháp của tôi
-                                    </Button>
-                                    <Button
-                                        className={clsx(styles.subCategoriesBtn)}
-                                        category="textStyle"
-                                        size="large"
-                                        to="#"
-                                    >
-                                        <img src={icons.saved} alt="my post icon"/>&nbsp;
-                                        Đã lưu
-                                    </Button>
-                                    <Button
-                                        className={clsx(styles.subCategoriesBtn)}
-                                        category="textStyle"
-                                        size="large"
-                                        to="#"
-                                    >
-                                        <img src={icons.setting} alt="my post icon"/>&nbsp;
-                                        Tùy chỉnh tài khoản
-                                    </Button>
-                                    <hr />
-                                    <Button
-                                        className={clsx(styles.subCategoriesBtn)}
-                                        category="textStyle"
-                                        size="large"
-                                        to="#"
-                                    >
-                                        <img src={icons.logout} alt="my post icon"/>&nbsp;
-                                        Đăng xuất
-                                    </Button>
-                                </main>
-                                <footer className={styles.logout}></footer>
-                            </div>
+                            <img src={userInfo.avatar} alt="avatar"/>
                         </Button>
+                        <div
+                            className={clsx(styles.userSetting, styles.subCategoriesMenu)}
+                            ref={userSettingRef}
+                        >
+                            <header className={clsx(styles.userInfoContainer, "flex")}>
+                                <div className={styles.userInfo}>
+                                    <img src={userInfo.avatar} alt="user avatar"/>
+                                    <div className={clsx(styles.userName)}>
+                                        <p>{userInfo.name}</p>
+                                        <p>@{userInfo.username}</p>
+                                    </div>
+                                </div>
+                                <Button
+                                    className={styles.userProfileBtn}
+                                    category="outline"
+                                    size="medium"
+                                    border="rounded"
+                                    to="#"
+                                >
+                                    Xem trang cá nhân
+                                </Button>
+                            </header>
+                            <hr />
+                            <main>
+                                <Button
+                                    className={clsx(styles.subCategoriesBtn)}
+                                    category="textStyle"
+                                    size="large"
+                                    to="#"
+                                >
+                                    <img src={icons.mypost} alt="my post icon"/>&nbsp;
+                                    Bài viết của tôi
+                                </Button>
+                                <Button
+                                    className={clsx(styles.subCategoriesBtn)}
+                                    category="textStyle"
+                                    size="large"
+                                    to="#"
+                                >
+                                    <img src={icons.draft} alt="my post icon"/>&nbsp;
+                                    Nháp của tôi
+                                </Button>
+                                <Button
+                                    className={clsx(styles.subCategoriesBtn)}
+                                    category="textStyle"
+                                    size="large"
+                                    to="#"
+                                >
+                                    <img src={icons.saved} alt="my post icon"/>&nbsp;
+                                    Đã lưu
+                                </Button>
+                                <Button
+                                    className={clsx(styles.subCategoriesBtn)}
+                                    category="textStyle"
+                                    size="large"
+                                    to="#"
+                                >
+                                    <img src={icons.setting} alt="my post icon"/>&nbsp;
+                                    Tùy chỉnh tài khoản
+                                </Button>
+                                <hr />
+                                <Button
+                                    className={clsx(styles.subCategoriesBtn)}
+                                    category="textStyle"
+                                    size="large"
+                                    onClick={handleSignOut}
+                                >
+                                    <img src={icons.logout} alt="my post icon"/>&nbsp;
+                                    Đăng xuất
+                                </Button>
+                            </main>
+                        </div>
                     </div>
                     <SearchModal open={openSearch} close={closeSearchBox}/>
                 </nav>

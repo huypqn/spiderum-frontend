@@ -28,11 +28,14 @@ function Login() {
                 notifyRef.current.classList.add(styles.show)
             }
             else {
+                localStorage.setItem('isLoggedIn', true)
+                localStorage.setItem('user', JSON.stringify(res))
                 const action = setLogIn({
                     isLoggedIn: true,
                     id: res.id,
                     name: res.name,
-                    username: res.username
+                    username: res.username,
+                    avatar: res.avatar
                 })
                 dispatch(action)
                 navigate(routesPath.home)
@@ -54,7 +57,10 @@ function Login() {
             </div>
             <div className={styles.container}>
                 <img className={styles.logo} src={icons.spider} alt="spider logo"/>
-                <Form className={styles.loginForm} handleData={handleFormData}>
+                <Form
+                    className={styles.loginForm}
+                    handleData={handleFormData}
+                >
                     <FormGroup
                         className={styles.group}
                         id="username"
